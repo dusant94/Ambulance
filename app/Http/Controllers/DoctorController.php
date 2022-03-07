@@ -42,7 +42,7 @@ class DoctorController extends Controller
             $inputs['role'] = 'doctor';
             $inputs['password'] = Hash::make($inputs['password']);
             $doctor = User::create($inputs);
-            return response()->json($doctor, Response::HTTP_OK);
+            return response()->json($doctor, Response::HTTP_CREATED);
         } catch (Exception $e) {
             return response()->json($e->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);
         }

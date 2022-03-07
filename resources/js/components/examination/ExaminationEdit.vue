@@ -15,6 +15,21 @@
         <div class="data-fields px-2 mt-3">
           <div class="row">
             <div class="row">
+                  <div class="col-sm-12 data-field-col">
+                <label>Time of Examination </label>
+                <div class="col-md-12">
+                  <b v-if="user.role == 'doctor' && data">{{ time_of_examination }}</b>
+                    <flat-pickr
+                      v-model="time_of_examination"
+                    :config="configforpicker"
+                      class="form-control"
+                      style="background-color: #10163a"
+                      placeholder="Select date"
+                      name="date"
+
+                    />
+                </div>
+              </div>
               <div class="col-sm-12 data-field-col">
                 <label>Patient </label>
                 <div class="col-md-12">
@@ -96,7 +111,11 @@
 </template>
 
 <script>
+import flatPickr from 'vue-flatpickr-component';
+import 'flatpickr/dist/flatpickr.css';
+
 export default {
+  components: { flatPickr },
   name: "examintaions-edit",
   props: ["data"],
   data() {
@@ -108,13 +127,21 @@ export default {
       performed: this.data ? this.data.performed : false,
       patient: this.data ? this.data.patient : null,
       doctor: this.data ? this.data.doctor : null,
+      time_of_examination: this.data ? this.data.time_of_examination : null,
       doctors: [],
       patients: [],
       user: this.$store.state.auth.user,
+      configforpicker: {
+        wrap: true,
+        altFormat: "d.m.Y H:i",
+        altInput: true,
+        dateFormat: "d.m.Y H:i",
+        enableTime: true,
+      },
     };
   },
   created() {
-    axios.get("/api/doctors/table").then((response) => {
+     axios.get("/api/doctors/table").then((response) => {
       this.doctors = response.data;
     });
     axios.get("/api/patients/table").then((response) => {
@@ -128,6 +155,7 @@ export default {
         performed: this.performed,
         patient_id: this.patient ? this.patient.id : null,
         doctor_id: this.doctor ? this.doctor.id : null,
+        time_of_examination: this.time_of_examination,
       };
       if (this.data) {
         axios

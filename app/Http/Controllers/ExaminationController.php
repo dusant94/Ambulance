@@ -31,7 +31,6 @@ class ExaminationController extends Controller
     {
         try {
             $inputs = $request->validated();
-            $inputs['time_of_examination'] = Carbon::now();
             $examination = Examination::create($inputs);
             return response()->json($examination, Response::HTTP_OK);
         } catch (Exception $e) {
@@ -47,9 +46,10 @@ class ExaminationController extends Controller
             if($user->role == 'doctor'){
                 unset($inputs['patient_id']);
                 unset($inputs['doctor_id']);
+                unset($inputs['time_of_examination']);
              }
             $examination = $examination->update($inputs);
-            return response()->json($examination, Response::HTTP_OK);
+            return response()->json($examination, Response::HTTP_CREATED);
         } catch (Exception $e) {
             return response()->json($e->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);
         }

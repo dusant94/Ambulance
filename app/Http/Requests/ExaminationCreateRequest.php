@@ -28,6 +28,7 @@ class ExaminationCreateRequest extends FormRequest
             'performed' => ['sometimes', 'boolean'],
             'doctor_id' => ['required', 'integer', 'exists:users,id'],
             'patient_id' => ['required', 'integer', 'exists:patients,id'],
+            'time_of_examination' => ['required', 'date_format:d.m.Y H:i',],
         ];
     }
     public function messages()
