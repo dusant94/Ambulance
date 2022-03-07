@@ -13,8 +13,8 @@ class ExaminationController extends Controller
     {
         $user = Auth::user();
         $doctors = Examination::with('patient', 'doctor')
-            ->where('doctor_id', $user->id)
-            ->where('parformed', 0)->get();
+            // ->where('doctor_id', $user->id)
+             ->get();
         return response()->json($doctors, Response::HTTP_OK);
     }
 }
