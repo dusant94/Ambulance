@@ -14,16 +14,15 @@ class Examination extends Model
         'patient_id',
         'doctor_id',
         'diagnosis',
-        'parformed',
         'time_of_examination',
         'performed',
     ];
 
     public function patient(){
-        return $this->hasOne(Patient::class, 'id', 'patient_id')->withTrashed();;
+        return $this->hasOne(Patient::class, 'id', 'patient_id')->with('location')->withTrashed();;
     }
 
     public function doctor(){
-        return $this->hasOne(User::class, 'id', 'doctor_id')->withTrashed();;
+        return $this->hasOne(User::class, 'id', 'doctor_id')->with('type')->withTrashed();;
     }
 }

@@ -61,4 +61,5 @@ class DoctorController extends Controller
         $types = TypDoctor::all();
         return response()->json($types, Response::HTTP_OK);
     }
+
 }

@@ -16,7 +16,7 @@
           <div class="row">
             <div class="row">
               <div class="col-sm-12 data-field-col">
-                <label>Patient</label>
+                <label>Patient </label>
                 <div class="col-md-8">
                     <p v-if="user.role == 'doctor' && data">{{ patient.name }}</p>
                   <select v-if="user.role !== 'doctor'" class="form-control square" v-model="patient">
@@ -102,12 +102,16 @@ export default {
       user: this.$store.state.auth.user,
     };
   },
-  mounted() {
+  created() {
     axios.get("/api/doctors/table").then((response) => {
       this.doctors = response.data;
+    console.log(this.doctors);
+
     });
     axios.get("/api/patients/table").then((response) => {
       this.patients = response.data;
+    console.log(this.patients);
+
     });
   },
   methods: {

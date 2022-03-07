@@ -22,7 +22,7 @@ class PatientFactory extends Factory
             'last_name' => $this->faker->name(),
             'location_id' =>  $this->faker->randomElement($locations),
             'jmbg' => rand(10**12,10**13-1),
-            'note' => Str::random(100),
+            'note' => $this->faker->text(),
         ];
     }
 }

@@ -25,7 +25,7 @@ class ExaminationCreateRequest extends FormRequest
     {
         return [
             'diagnosis' => ['required', 'string', 'max:2000'],
-            'parformed' => ['sometimes', 'boolean'],
+            'performed' => ['sometimes', 'boolean'],
             'doctor_id' => ['required', 'integer', 'exists:users,id'],
             'patient_id' => ['required', 'integer', 'exists:patients,id'],
         ];

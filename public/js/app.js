@@ -5356,7 +5356,7 @@ __webpack_require__.r(__webpack_exports__);
       types: null
     };
   },
-  mounted: function mounted() {
+  created: function created() {
     var _this = this;
 
     axios.get("/api/doctors/types").then(function (response) {
@@ -5553,10 +5553,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/doctor/ExaminationEdit.vue?vue&type=script&lang=js&":
-/*!*****************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/doctor/ExaminationEdit.vue?vue&type=script&lang=js& ***!
-  \*****************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/examination/ExaminationEdit.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/examination/ExaminationEdit.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -5667,14 +5667,16 @@ __webpack_require__.r(__webpack_exports__);
       user: this.$store.state.auth.user
     };
   },
-  mounted: function mounted() {
+  created: function created() {
     var _this = this;
 
     axios.get("/api/doctors/table").then(function (response) {
       _this.doctors = response.data;
+      console.log(_this.doctors);
     });
     axios.get("/api/patients/table").then(function (response) {
       _this.patients = response.data;
+      console.log(_this.patients);
     });
   },
   methods: {
@@ -5757,7 +5759,7 @@ window.Vue = (__webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js
 
 Vue.component('doctors-create', (__webpack_require__(/*! ./components/admin/DoctorsCreate.vue */ "./resources/js/components/admin/DoctorsCreate.vue")["default"]));
 Vue.component('patients-create', (__webpack_require__(/*! ./components/admin/PatientsCreate.vue */ "./resources/js/components/admin/PatientsCreate.vue")["default"]));
-Vue.component('examinations-edit', (__webpack_require__(/*! ./components/doctor/ExaminationEdit.vue */ "./resources/js/components/doctor/ExaminationEdit.vue")["default"]));
+Vue.component('examinations-edit', (__webpack_require__(/*! ./components/examination/ExaminationEdit.vue */ "./resources/js/components/examination/ExaminationEdit.vue")["default"]));
 
 
 var app = new Vue({
@@ -5856,7 +5858,7 @@ var PatientsList = function PatientsList() {
 };
 
 var ExaminationsList = function ExaminationsList() {
-  return __webpack_require__.e(/*! import() */ "resources_js_components_doctor_ExaminationsList_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../components/doctor/ExaminationsList.vue */ "./resources/js/components/doctor/ExaminationsList.vue"));
+  return __webpack_require__.e(/*! import() */ "resources_js_components_examination_ExaminationsList_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../components/examination/ExaminationsList.vue */ "./resources/js/components/examination/ExaminationsList.vue"));
 };
 /* Authenticated Component */
 
@@ -28564,10 +28566,10 @@ component.options.__file = "resources/js/components/admin/PatientsCreate.vue"
 
 /***/ }),
 
-/***/ "./resources/js/components/doctor/ExaminationEdit.vue":
-/*!************************************************************!*\
-  !*** ./resources/js/components/doctor/ExaminationEdit.vue ***!
-  \************************************************************/
+/***/ "./resources/js/components/examination/ExaminationEdit.vue":
+/*!*****************************************************************!*\
+  !*** ./resources/js/components/examination/ExaminationEdit.vue ***!
+  \*****************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -28575,8 +28577,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _ExaminationEdit_vue_vue_type_template_id_11330b16___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ExaminationEdit.vue?vue&type=template&id=11330b16& */ "./resources/js/components/doctor/ExaminationEdit.vue?vue&type=template&id=11330b16&");
-/* harmony import */ var _ExaminationEdit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ExaminationEdit.vue?vue&type=script&lang=js& */ "./resources/js/components/doctor/ExaminationEdit.vue?vue&type=script&lang=js&");
+/* harmony import */ var _ExaminationEdit_vue_vue_type_template_id_6969243c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ExaminationEdit.vue?vue&type=template&id=6969243c& */ "./resources/js/components/examination/ExaminationEdit.vue?vue&type=template&id=6969243c&");
+/* harmony import */ var _ExaminationEdit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ExaminationEdit.vue?vue&type=script&lang=js& */ "./resources/js/components/examination/ExaminationEdit.vue?vue&type=script&lang=js&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -28587,8 +28589,8 @@ __webpack_require__.r(__webpack_exports__);
 ;
 var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
   _ExaminationEdit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _ExaminationEdit_vue_vue_type_template_id_11330b16___WEBPACK_IMPORTED_MODULE_0__.render,
-  _ExaminationEdit_vue_vue_type_template_id_11330b16___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  _ExaminationEdit_vue_vue_type_template_id_6969243c___WEBPACK_IMPORTED_MODULE_0__.render,
+  _ExaminationEdit_vue_vue_type_template_id_6969243c___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
   false,
   null,
   null,
@@ -28598,7 +28600,7 @@ var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/components/doctor/ExaminationEdit.vue"
+component.options.__file = "resources/js/components/examination/ExaminationEdit.vue"
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
 
 /***/ }),
@@ -28635,10 +28637,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/doctor/ExaminationEdit.vue?vue&type=script&lang=js&":
-/*!*************************************************************************************!*\
-  !*** ./resources/js/components/doctor/ExaminationEdit.vue?vue&type=script&lang=js& ***!
-  \*************************************************************************************/
+/***/ "./resources/js/components/examination/ExaminationEdit.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************!*\
+  !*** ./resources/js/components/examination/ExaminationEdit.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -28646,7 +28648,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ExaminationEdit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./ExaminationEdit.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/doctor/ExaminationEdit.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ExaminationEdit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./ExaminationEdit.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/examination/ExaminationEdit.vue?vue&type=script&lang=js&");
  /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ExaminationEdit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
@@ -28685,19 +28687,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/doctor/ExaminationEdit.vue?vue&type=template&id=11330b16&":
-/*!*******************************************************************************************!*\
-  !*** ./resources/js/components/doctor/ExaminationEdit.vue?vue&type=template&id=11330b16& ***!
-  \*******************************************************************************************/
+/***/ "./resources/js/components/examination/ExaminationEdit.vue?vue&type=template&id=6969243c&":
+/*!************************************************************************************************!*\
+  !*** ./resources/js/components/examination/ExaminationEdit.vue?vue&type=template&id=6969243c& ***!
+  \************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExaminationEdit_vue_vue_type_template_id_11330b16___WEBPACK_IMPORTED_MODULE_0__.render),
-/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExaminationEdit_vue_vue_type_template_id_11330b16___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExaminationEdit_vue_vue_type_template_id_6969243c___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExaminationEdit_vue_vue_type_template_id_6969243c___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExaminationEdit_vue_vue_type_template_id_11330b16___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./ExaminationEdit.vue?vue&type=template&id=11330b16& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/doctor/ExaminationEdit.vue?vue&type=template&id=11330b16&");
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExaminationEdit_vue_vue_type_template_id_6969243c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./ExaminationEdit.vue?vue&type=template&id=6969243c& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/examination/ExaminationEdit.vue?vue&type=template&id=6969243c&");
 
 
 /***/ }),
@@ -29222,10 +29224,10 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/doctor/ExaminationEdit.vue?vue&type=template&id=11330b16&":
-/*!**********************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/doctor/ExaminationEdit.vue?vue&type=template&id=11330b16& ***!
-  \**********************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/examination/ExaminationEdit.vue?vue&type=template&id=6969243c&":
+/*!***************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/examination/ExaminationEdit.vue?vue&type=template&id=6969243c& ***!
+  \***************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -29268,7 +29270,7 @@ var render = function () {
           _c("div", { staticClass: "row" }, [
             _c("div", { staticClass: "row" }, [
               _c("div", { staticClass: "col-sm-12 data-field-col" }, [
-                _c("label", [_vm._v("Patient")]),
+                _c("label", [_vm._v("Patient ")]),
                 _vm._v(" "),
                 _c("div", { staticClass: "col-md-8" }, [
                   _vm.user.role == "doctor" && _vm.data
@@ -46246,7 +46248,7 @@ module.exports = JSON.parse('{"_from":"axios@^0.21","_id":"axios@0.21.4","_inBun
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resource/js/components/login":1,"resource/js/components/layouts/dashboard":1,"resource/js/components/dashboard":1,"resources_js_components_admin_DoctorsList_vue":1,"resources_js_components_admin_PatientsList_vue":1,"resources_js_components_doctor_ExaminationsList_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resource/js/components/login":1,"resource/js/components/layouts/dashboard":1,"resource/js/components/dashboard":1,"resources_js_components_admin_DoctorsList_vue":1,"resources_js_components_admin_PatientsList_vue":1,"resources_js_components_examination_ExaminationsList_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

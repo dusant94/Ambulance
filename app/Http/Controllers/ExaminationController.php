@@ -22,7 +22,7 @@ class ExaminationController extends Controller
         $user = Auth::user();
         $examinations = Examination::query();
         if ($user->role == 'doctor') {
-            $examinations = $examinations->where('doctor_id', $user->id)->where('parformed', 0);
+            $examinations = $examinations->where('doctor_id', $user->id)->where('performed', 0);
         }
         $examinations = $examinations->with('patient', 'doctor')->orderBy('created_at', 'desc')->get();
         return response()->json($examinations, Response::HTTP_OK);

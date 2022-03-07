@@ -17,7 +17,7 @@ const DahboardLayout = () => import('../components/Layouts/Dashboard.vue' /* web
 const Dashboard = () => import('../components/Dashboard.vue' /* webpackChunkName: "resource/js/components/dashboard" */)
 const DoctorsList = () => import('../components/admin/DoctorsList.vue')
 const PatientsList = () => import('../components/admin/PatientsList.vue')
-const ExaminationsList = () => import('../components/doctor/ExaminationsList.vue')
+const ExaminationsList = () => import('../components/examination/ExaminationsList.vue')
 
 /* Authenticated Component */
 

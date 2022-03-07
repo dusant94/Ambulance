@@ -21,9 +21,9 @@ class ExaminationFactory extends Factory
         return [
             'doctor_id' =>  $this->faker->randomElement($doctors),
             'patient_id' => $this->faker->randomElement($patients),
-            'parformed' => rand(0,1),
+            'performed' => rand(0,1),
             'time_of_examination' => now(),
-            'diagnosis' => Str::random(100),
+            'diagnosis' => $this->faker->text(),
         ];
     }
 }

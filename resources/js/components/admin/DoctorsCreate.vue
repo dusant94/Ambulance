@@ -93,7 +93,7 @@ export default {
       types: null,
     };
   },
-  mounted() {
+  created() {
     axios.get("/api/doctors/types").then((response) => {
       this.types = response.data;
     });

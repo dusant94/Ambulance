@@ -28,7 +28,7 @@ window.Vue = require('vue').default;
  */
  Vue.component('doctors-create', require('./components/admin/DoctorsCreate.vue').default);
  Vue.component('patients-create', require('./components/admin/PatientsCreate.vue').default);
- Vue.component('examinations-edit', require('./components/doctor/ExaminationEdit.vue').default);
+ Vue.component('examinations-edit', require('./components/examination/ExaminationEdit.vue').default);
 
  import router from './router'
  import store from './store'

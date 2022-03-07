@@ -43,7 +43,7 @@
                 <td>{{ examination.performed ? "YES" : "NO" }}  </td>
                 <td class="product-name">{{ examination.patient.name }}</td>
                 <td class="product-name">{{ examination.doctor.name }}</td>
-                <td class="product-name">{{ examination.diagnosis }}</td>
+                <td class="product-name" style="width: 400px;">{{ examination.diagnosis }}</td>
 
                 <td class="product-action fonticon-wrap">
                   <a
