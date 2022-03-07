@@ -80,6 +80,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "delete-modal",
   props: ["id", "modal_message"],
@@ -544,43 +553,12 @@ var render = function () {
           "div",
           {
             staticClass:
-              "\n      modal-dialog\n      modal-dialog-centered\n      modal-dialog-centered\n      modal-dialog-scrollable\n    ",
+              "\n        modal-dialog\n        modal-dialog-centered\n        modal-dialog-centered\n        modal-dialog-scrollable\n      ",
             attrs: { role: "document" },
           },
           [
             _c("div", { staticClass: "modal-content" }, [
-              _c("div", { staticClass: "modal-header bg-danger white" }, [
-                _c(
-                  "h5",
-                  {
-                    staticClass: "modal-title",
-                    attrs: { id: "exampleModalCenterTitle" },
-                  },
-                  [
-                    _vm._v(
-                      "\n                        Are you sure?\n                    "
-                    ),
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "close",
-                    attrs: {
-                      type: "button",
-                      "data-dismiss": "modal",
-                      "aria-label": "Close",
-                    },
-                    on: { click: _vm.closeModal },
-                  },
-                  [
-                    _c("span", { attrs: { "aria-hidden": "true" } }, [
-                      _vm._v("×"),
-                    ]),
-                  ]
-                ),
-              ]),
+              _vm._m(0),
               _vm._v(" "),
               _c("div", { staticClass: "modal-body" }, [
                 _c("div", { staticClass: "row" }, [
@@ -591,8 +569,7 @@ var render = function () {
                       [
                         _c("span", [
                           _vm._v(
-                            "Do you want to delete  " +
-                              _vm._s(_vm.modal_message)
+                            "Do you want to delete " + _vm._s(_vm.modal_message)
                           ),
                         ]),
                       ]
@@ -606,7 +583,7 @@ var render = function () {
                   "button",
                   {
                     staticClass:
-                      "btn btn-relief-danger square mr-1 mb-1 waves-effect waves-light",
+                      "\n              btn btn-danger\n              square\n              mr-1\n              mb-1\n             ",
                     attrs: { type: "button", "data-dismiss": "modal" },
                     on: {
                       click: function ($event) {
@@ -614,26 +591,18 @@ var render = function () {
                       },
                     },
                   },
-                  [
-                    _vm._v(
-                      "\n                        Delete\n                    "
-                    ),
-                  ]
+                  [_vm._v("\n            Delete\n          ")]
                 ),
                 _vm._v(" "),
                 _c(
                   "button",
                   {
                     staticClass:
-                      "btn btn-outline-warning square mr-1 mb-1 waves-effect waves-light",
+                      "\n              btn btn-warning\n              square\n              mr-1\n              mb-1\n             ",
                     attrs: { type: "button" },
                     on: { click: _vm.closeModal },
                   },
-                  [
-                    _vm._v(
-                      "\n                        Cancel\n                    "
-                    ),
-                  ]
+                  [_vm._v("\n            Cancel\n          ")]
                 ),
               ]),
             ]),
@@ -643,7 +612,23 @@ var render = function () {
     ),
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header bg-danger white" }, [
+      _c(
+        "h5",
+        {
+          staticClass: "modal-title",
+          attrs: { id: "exampleModalCenterTitle" },
+        },
+        [_vm._v("\n            Are you sure?\n          ")]
+      ),
+    ])
+  },
+]
 render._withStripped = true
 
 

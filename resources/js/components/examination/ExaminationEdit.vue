@@ -17,9 +17,13 @@
             <div class="row">
               <div class="col-sm-12 data-field-col">
                 <label>Patient </label>
-                <div class="col-md-8">
-                    <p v-if="user.role == 'doctor' && data">{{ patient.name }}</p>
-                  <select v-if="user.role !== 'doctor'" class="form-control square" v-model="patient">
+                <div class="col-md-12">
+                  <p v-if="user.role == 'doctor' && data">{{ patient.name }}</p>
+                  <select
+                    v-if="user.role !== 'doctor'"
+                    class="form-control square"
+                    v-model="patient"
+                  >
                     <option
                       :value="patient"
                       v-for="patient in patients"
@@ -32,9 +36,13 @@
               </div>
               <div class="col-sm-12 data-field-col">
                 <label>Doctor</label>
-                <div class="col-md-8" >
-                    <p v-if="user.role == 'doctor' && data">{{ doctor.name }}</p>
-                  <select v-if="user.role !== 'doctor'" class="form-control square" v-model="doctor">
+                <div class="col-md-12">
+                  <p v-if="user.role == 'doctor' && data">{{ doctor.name }}</p>
+                  <select
+                    v-if="user.role !== 'doctor'"
+                    class="form-control square"
+                    v-model="doctor"
+                  >
                     <option
                       :value="doctor"
                       v-for="doctor in doctors"
@@ -45,14 +53,16 @@
                   </select>
                 </div>
               </div>
-                  <div class="col-md-12">
-                <span>Diagnosis</span>
-              </div>
-             <div class="col-md-12">
-                <textarea class="form-control square" v-model="diagnosis"></textarea>
-              </div>
-                 <div class="col-sm-12 data-field-col">
-                <label>Performed</label>
+              <div class="col-sm-12 data-field-col">
+                <label>Diagnosis</label>
+                <div class="col-md-12">
+                  <textarea
+                    class="form-control square"
+                    v-model="diagnosis"
+                  ></textarea>
+                </div>
+                <div class="col-sm-12 data-field-col">
+                  <label>Performed</label>
                   <div class="col-md-12">
                     <fieldset class="checkbox">
                       <div class="vs-checkbox-con vs-checkbox-primary">
@@ -65,6 +75,7 @@
                       </div>
                     </fieldset>
                   </div>
+                </div>
               </div>
             </div>
           </div>
@@ -78,9 +89,7 @@
         </button>
       </div>
       <div class="cancel-data-btn">
-        <button class="btn btn-outline-danger" @click="closeSidebar">
-          Cancel
-        </button>
+        <button class="btn btn-danger" @click="closeSidebar">Cancel</button>
       </div>
     </div>
   </div>
@@ -92,7 +101,9 @@ export default {
   props: ["data"],
   data() {
     return {
-      url: this.data ? "/api/examinations/" + this.data.id : "/api/examinations/",
+      url: this.data
+        ? "/api/examinations/" + this.data.id
+        : "/api/examinations/",
       diagnosis: this.data ? this.data.diagnosis : null,
       performed: this.data ? this.data.performed : false,
       patient: this.data ? this.data.patient : null,
@@ -105,46 +116,55 @@ export default {
   created() {
     axios.get("/api/doctors/table").then((response) => {
       this.doctors = response.data;
-    console.log(this.doctors);
-
     });
     axios.get("/api/patients/table").then((response) => {
       this.patients = response.data;
-    console.log(this.patients);
-
     });
   },
   methods: {
-    // validateForm() {
-    //     this.errors = [];
-    //     if (!this.chassis_number)
-    //         this.errors.push(this.__('validations.chassis_number'));
-
-    //     if (this.errors.length === 0) return false;
-    //     else
-    //         this.errors.forEach((error) => {
-    //             toastr.error(error);
-    //         });
-    //     return true;
-    // },
     save() {
-      // if (this.validateForm()) {
-      //     return;
-      // }
       let data = {
         diagnosis: this.diagnosis,
         performed: this.performed,
-        patient_id: this.patient.id,
-        doctor_id: this.doctor.id,
+        patient_id: this.patient ? this.patient.id : null,
+        doctor_id: this.doctor ? this.doctor.id : null,
       };
       if (this.data) {
-        axios.put(this.url, data).then((response) => {
-          this.$emit("refreshData");
-        });
+        axios
+          .put(this.url, data)
+          .then((response) => {
+            this.$emit("refreshData");
+          })
+          .catch((error) => {
+            Object.values(error.response.data.errors).forEach(
+              (value, index) => {
+                this.$notify({
+                  group: "foo",
+                  type: "warn",
+                  title: "Error",
+                  text: value[0],
+                });
+              }
+            );
+          });
       } else {
-        axios.post(this.url, data).then((response) => {
-          this.$emit("refreshData");
-        });
+        axios
+          .post(this.url, data)
+          .then((response) => {
+            this.$emit("refreshData");
+          })
+          .catch((error) => {
+            Object.values(error.response.data.errors).forEach(
+              (value, index) => {
+                this.$notify({
+                  group: "foo",
+                  type: "warn",
+                  title: "Error",
+                  text: value[0],
+                });
+              }
+            );
+          });
       }
     },
     closeSidebar() {

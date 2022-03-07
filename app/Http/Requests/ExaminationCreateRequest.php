@@ -30,4 +30,10 @@ class ExaminationCreateRequest extends FormRequest
             'patient_id' => ['required', 'integer', 'exists:patients,id'],
         ];
     }
+    public function messages()
+    {
+        return [
+            'diagnosis.required' => "Diagnosis is required",
+        ];
+    }
 }

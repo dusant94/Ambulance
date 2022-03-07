@@ -14,39 +14,37 @@
       <div class="data-items pb-3">
         <div class="data-fields px-2 mt-3">
           <div class="row">
-            <div class="row">
-              <div class="col-sm-6 data-field-col">
-                <label>Name</label>
-                <input type="text" class="form-control" v-model="name" />
+            <div class="col-sm-6 data-field-col">
+              <label>Name</label>
+              <input type="text" class="form-control" v-model="name" />
+            </div>
+            <div class="col-sm-6 data-field-col">
+              <label>Last name</label>
+              <input type="text" class="form-control" v-model="last_name" />
+            </div>
+            <div class="col-sm-12 data-field-col">
+              <label>Locations</label>
+              <div class="col-md-8">
+                <select class="form-control square" v-model="location">
+                  <option
+                    :value="location"
+                    v-for="location in locations"
+                    :key="location.id"
+                  >
+                    {{ location.address }}
+                  </option>
+                </select>
               </div>
-              <div class="col-sm-6 data-field-col">
-                <label>Last name</label>
-                <input type="text" class="form-control" v-model="last_name" />
-              </div>
-              <div class="col-sm-12 data-field-col">
-                <label>Locations</label>
-                <div class="col-md-8">
-                  <select class="form-control square" v-model="location">
-                    <option
-                      :value="location"
-                      v-for="location in locations"
-                      :key="location.id"
-                    >
-                      {{ location.address }}
-                    </option>
-                  </select>
-                </div>
-              </div>
-              <div class="col-sm-12 data-field-col">
-                <label>JMBG</label>
-                <input type="text" class="form-control" v-model="jmbg" />
-              </div>
-              <div class="col-md-12">
-                <span>Note</span>
-              </div>
-              <div class="col-md-12">
-                <textarea class="form-control square" v-model="note"></textarea>
-              </div>
+            </div>
+            <div class="col-sm-12 data-field-col">
+              <label>JMBG</label>
+              <input type="text" class="form-control" v-model="jmbg" />
+            </div>
+            <div class="col-md-12">
+              <span>Note</span>
+            </div>
+            <div class="col-md-12">
+              <textarea class="form-control square" v-model="note"></textarea>
             </div>
           </div>
         </div>
@@ -59,9 +57,7 @@
         </button>
       </div>
       <div class="cancel-data-btn">
-        <button class="btn btn-outline-danger" @click="closeSidebar">
-          Cancel
-        </button>
+        <button class="btn btn-danger" @click="closeSidebar">Cancel</button>
       </div>
     </div>
   </div>
@@ -88,22 +84,7 @@ export default {
     });
   },
   methods: {
-    // validateForm() {
-    //     this.errors = [];
-    //     if (!this.chassis_number)
-    //         this.errors.push(this.__('validations.chassis_number'));
-
-    //     if (this.errors.length === 0) return false;
-    //     else
-    //         this.errors.forEach((error) => {
-    //             toastr.error(error);
-    //         });
-    //     return true;
-    // },
     save() {
-      // if (this.validateForm()) {
-      //     return;
-      // }
       let data = {
         name: this.name,
         last_name: this.last_name,
@@ -112,13 +93,41 @@ export default {
         jmbg: this.jmbg,
       };
       if (this.data) {
-        axios.put(this.url, data).then((response) => {
-          this.$emit("refreshData");
-        });
+        axios
+          .put(this.url, data)
+          .then((response) => {
+            this.$emit("refreshData");
+          })
+          .catch((error) => {
+            Object.values(error.response.data.errors).forEach(
+              (value, index) => {
+                this.$notify({
+                  group: "foo",
+                  type: "warn",
+                  title: "Error",
+                  text: value[0],
+                });
+              }
+            );
+          });
       } else {
-        axios.post(this.url, data).then((response) => {
-          this.$emit("refreshData");
-        });
+        axios
+          .post(this.url, data)
+          .then((response) => {
+            this.$emit("refreshData");
+          })
+          .catch((error) => {
+            Object.values(error.response.data.errors).forEach(
+              (value, index) => {
+                this.$notify({
+                  group: "foo",
+                  type: "warn",
+                  title: "Error",
+                  text: value[0],
+                });
+              }
+            );
+          });
       }
     },
     closeSidebar() {

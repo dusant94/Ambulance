@@ -26,7 +26,7 @@ class DoctorCreateRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'max:100'],
             'last_name' => ['required', 'string', 'max:100'],
-            'username' => ['required', 'string', 'max:32'],
+            'username' => ['required', 'string', 'max:32', 'unique:users', 'alpha_dash'],
             'password' => ['required', 'confirmed' ,'string', 'max:32'],
             'type' => ['required', 'integer', 'exists:typ_doctors,id'],
         ];

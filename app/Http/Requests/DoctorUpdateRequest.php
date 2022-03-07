@@ -26,7 +26,7 @@ class DoctorUpdateRequest extends FormRequest
         return [
             'name' => ['sometimes', 'string', 'max:100'],
             'last_name' => ['sometimes', 'string', 'max:100'],
-            'username' => ['sometimes', 'string', 'max:32'],
+            'username' => ['sometimes', 'string', 'max:32', 'unique:users', 'alpha_dash'],
             'password' => ['nullable', 'confirmed', 'string', 'max:32'],
             'type' => ['sometimes', 'integer', 'exists:typ_doctors,id'],
         ];

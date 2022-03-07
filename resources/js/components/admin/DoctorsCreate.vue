@@ -14,43 +14,43 @@
       <div class="data-items pb-3">
         <div class="data-fields px-2 mt-3">
           <div class="row">
-            <div class="row">
-              <div class="col-sm-6 data-field-col">
-                <label>Name</label>
-                <input type="text" class="form-control" v-model="name" />
-              </div>
-              <div class="col-sm-6 data-field-col">
-                <label>Last name</label>
+            <div class="col-sm-6 data-field-col pl-2">
+              <label>Name</label>
+                 <input type="text" class="form-control" v-model="name" />
+             </div>
+            <div class="col-sm-6 data-field-col pr-2">
+              <label>Last name</label>
                 <input type="text" class="form-control" v-model="last_name" />
               </div>
-              <div class="col-sm-12 data-field-col">
-                <label>Type</label>
-                <div class="col-md-8">
-                  <select class="form-control square" v-model="type">
-                    <option
-                      :value="type"
-                      v-for="type in types"
-                      :key="type.id"
-                    >
-                      {{ type.name }}
-                    </option>
-                  </select>
-                </div>
+             <div class="col-sm-12 data-field-col">
+              <label>Type</label>
+              <div class="col-md-8">
+                <select class="form-control square" v-model="type">
+                  <option :value="type" v-for="type in types" :key="type.id">
+                    {{ type.name }}
+                  </option>
+                </select>
               </div>
-              <div class="col-sm-12 data-field-col">
-                <label>Username</label>
+            </div>
+            <div class="col-sm-12 data-field-col">
+              <label>Username</label>
+              <div class="col-md-12">
                 <input type="text" class="form-control" v-model="username" />
               </div>
-              <div class="col-sm-12 data-field-col">
-                <label>Password</label>
+            </div>
+            <div class="col-sm-12 data-field-col">
+              <label>Password</label>
+              <div class="col-md-12">
                 <input
                   type="password"
                   class="form-control"
                   v-model="password"
                 />
               </div>
-              <div class="col-sm-12 data-field-col">
-                <label>Confirm Password</label>
+            </div>
+            <div class="col-sm-12 data-field-col">
+              <label>Confirm Password</label>
+              <div class="col-md-12">
                 <input
                   type="password"
                   class="form-control"
@@ -69,9 +69,7 @@
         </button>
       </div>
       <div class="cancel-data-btn">
-        <button class="btn btn-outline-danger" @click="closeSidebar">
-          Cancel
-        </button>
+        <button class="btn btn-danger" @click="closeSidebar">Cancel</button>
       </div>
     </div>
   </div>
@@ -99,38 +97,51 @@ export default {
     });
   },
   methods: {
-    // validateForm() {
-    //     this.errors = [];
-    //     if (!this.chassis_number)
-    //         this.errors.push(this.__('validations.chassis_number'));
-
-    //     if (this.errors.length === 0) return false;
-    //     else
-    //         this.errors.forEach((error) => {
-    //             toastr.error(error);
-    //         });
-    //     return true;
-    // },
     save() {
-      // if (this.validateForm()) {
-      //     return;
-      // }
       let data = {
         name: this.name,
         last_name: this.last_name,
         type: this.type.id,
         username: this.username,
         password: this.password,
-        password_confirmation: this.password_confirmation
+        password_confirmation: this.password_confirmation,
       };
       if (this.data) {
-        axios.put(this.url, data).then((response) => {
-          this.$emit("refreshData");
-        });
+        axios
+          .put(this.url, data)
+          .then((response) => {
+            this.$emit("refreshData");
+          })
+          .catch((error) => {
+            Object.values(error.response.data.errors).forEach(
+              (value, index) => {
+                this.$notify({
+                  group: "foo",
+                  type: "warn",
+                  title: "Error",
+                  text: value[0],
+                });
+              }
+            );
+          });
       } else {
-        axios.post(this.url, data).then((response) => {
-          this.$emit("refreshData");
-        });
+        axios
+          .post(this.url, data)
+          .then((response) => {
+            this.$emit("refreshData");
+          })
+          .catch((error) => {
+            Object.values(error.response.data.errors).forEach(
+              (value, index) => {
+                this.$notify({
+                  group: "foo",
+                  type: "warn",
+                  title: "Error",
+                  text: value[0],
+                });
+              }
+            );
+          });
       }
     },
     closeSidebar() {

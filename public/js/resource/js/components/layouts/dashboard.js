@@ -59,34 +59,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -1370,6 +1342,8 @@ var render = function () {
       _c("div", { staticClass: "sidenav-overlay" }),
       _vm._v(" "),
       _c("div", { staticClass: "drag-target" }),
+      _vm._v(" "),
+      _c("notifications", { attrs: { position: "bottom left", group: "foo" } }),
     ],
     1
   )
