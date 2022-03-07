@@ -31,6 +31,7 @@ Vue.use(Notifications);
  Vue.component('doctors-create', require('./components/admin/DoctorsCreate.vue').default);
  Vue.component('patients-create', require('./components/admin/PatientsCreate.vue').default);
  Vue.component('examinations-create', require('./components/examination/ExaminationCreate.vue').default);
+ Vue.component('pagination', require('./components/Pagination.vue').default);
 
  import router from './router'
  import store from './store'

@@ -24,7 +24,7 @@ class ExaminationController extends Controller
         if ($user->role == 'doctor') {
             $examinations = $examinations->where('doctor_id', $user->id)->where('performed', 0);
         }
-        $examinations = $examinations->with('patient', 'doctor')->orderBy('created_at', 'desc')->get();
+        $examinations = $examinations->with('patient', 'doctor')->orderBy('created_at', 'desc')->paginate(6);
         return response()->json($examinations, Response::HTTP_OK);
     }
     public function store(ExaminationCreateRequest $request)

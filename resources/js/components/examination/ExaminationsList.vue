@@ -29,24 +29,31 @@
           <table class="table table-hover-animation">
             <thead>
               <tr>
-                <th>#</th>
                 <th>Time of Examination</th>
                 <th>Completed</th>
                 <th>Patient</th>
                 <th>Doctor</th>
                 <th>Diagnosis</th>
-                <th> </th>
-                </tr>
+                <th></th>
+              </tr>
             </thead>
             <tbody>
-              <tr v-for="(examination, index) in examinations" :key="examination.id"
-               :style="[examination.performed ? {'background': 'white'} : {'background': '#c4c4c4'}]">
-                <td >{{ index + 1 }}</td>
-                <td >{{ examination.time_of_examination }}</td>
-                <td>{{ examination.performed ? "YES" : "NO" }}  </td>
+              <tr
+                v-for="(examination, index) in examinations"
+                :key="examination.id"
+                :style="[
+                  examination.performed
+                    ? { background: 'white' }
+                    : { background: '#c4c4c4' },
+                ]"
+              >
+                <td>{{ examination.time_of_examination }}</td>
+                <td>{{ examination.performed ? "YES" : "NO" }}</td>
                 <td class="product-name">{{ examination.patient.name }}</td>
                 <td class="product-name">{{ examination.doctor.name }}</td>
-                <td class="product-name" style="width: 400px;">{{ examination.diagnosis }}</td>
+                <td class="product-name" style="width: 400px">
+                  {{ examination.diagnosis }}
+                </td>
                 <td class="product-action fonticon-wrap">
                   <a
                     href="#"
@@ -55,23 +62,31 @@
                     ><i class="feather icon-edit"></i
                   ></a>
                   <a
-                  v-if="user.role == 'counter'"
+                    v-if="user.role == 'counter'"
                     href="#"
                     class="btn btn-flat-danger square"
-                    @click="openDeleteModal(examination.id,  examination.patient.name)"
+                    @click="
+                      openDeleteModal(examination.id, examination.patient.name)
+                    "
                     ><i class="feather icon-trash"></i
                   ></a>
                 </td>
               </tr>
             </tbody>
           </table>
+          <pagination
+            :url="url"
+            :values="examinations"
+            ref="pagination"
+            @refreshData="refreshData"
+          ></pagination>
         </div>
 
         <right-sidebar
           v-if="sidebar"
           :sidebarComponent="sidebarComponent"
           :data="sidebarData"
-          @refreshData="refreshData"
+          @refreshData="refreshDataSidebar"
           @closeSidebar="closeSidebar"
         >
         </right-sidebar>
@@ -95,12 +110,13 @@ import DeleteConfirmModal from "../DeleteConfirmModal.vue";
 export default {
   components: {
     RightSidebar,
-    DeleteConfirmModal
+    DeleteConfirmModal,
   },
   name: "examinations",
   data() {
     return {
       id: null,
+      url: "/api/examinations/table",
       modal: false,
       modalComponent: null,
       sidebar: false,
@@ -109,11 +125,6 @@ export default {
       user: this.$store.state.auth.user,
       examinations: [],
     };
-  },
-  created() {
-    axios.get("/api/examinations/table").then((response) => {
-      this.examinations = response.data;
-    });
   },
   methods: {
     openDeleteModal(id, modal_message) {
@@ -136,15 +147,16 @@ export default {
       this.sidebarData = null;
       this.sidebarComponent = null;
     },
-    refreshData() {
-      axios.get("/api/examinations/table").then((response) => {
-        this.examinations = response.data;
-      });
+    refreshData(data) {
+      this.examinations = data;
+    },
+    refreshDataSidebar() {
+      this.$refs.pagination.pagination();
       this.closeSidebar();
     },
     delete(id) {
       axios.delete("/api/examinations/" + id).then((response) => {});
-      this.refreshData();
+      this.refreshDataSidebar();
     },
     confirm(id) {
       this.delete(id);
