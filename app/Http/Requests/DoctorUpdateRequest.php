@@ -24,10 +24,10 @@ class DoctorUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['sometimes', 'string', 'max:50'],
-            'last_name' => ['sometimes', 'string', 'max:50'],
+            'name' => ['sometimes', 'string', 'max:100'],
+            'last_name' => ['sometimes', 'string', 'max:100'],
             'username' => ['sometimes', 'string', 'max:32'],
-            'password' => ['sometimes', 'string', 'max:32'],
+            'password' => ['nullable', 'confirmed', 'string', 'max:32'],
             'type' => ['sometimes', 'integer', 'exists:typ_doctors,id'],
         ];
     }

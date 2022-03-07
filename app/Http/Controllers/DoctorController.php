@@ -26,8 +26,10 @@ class DoctorController extends Controller
          try {
             $inputs = $request->validated();
             $doctor = User::findOrFail($id);
-            $inputs['password'] = Hash::make($inputs['password']);
-            $doctor = $doctor->update($inputs);
+            if($inputs['password'] !== null){
+                $inputs['password'] = Hash::make($inputs['password']);
+            }
+            $doctor = $doctor->update(array_filter($inputs));
             return response()->json($doctor, Response::HTTP_OK);
         } catch (Exception $e) {
             return response()->json($e->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);

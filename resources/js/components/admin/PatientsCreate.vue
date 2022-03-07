@@ -107,9 +107,9 @@ export default {
       let data = {
         name: this.name,
         last_name: this.last_name,
-        type: this.type.id,
-        username: this.username,
-        password: this.password,
+        location_id: this.location.id,
+        note: this.note,
+        jmbg: this.jmbg,
       };
       if (this.data) {
         axios.put(this.url, data).then((response) => {

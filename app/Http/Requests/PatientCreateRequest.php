@@ -24,11 +24,11 @@ class PatientCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', 'string', 'max:50'],
-            'last_name' => ['required', 'string', 'max:50'],
-            'jmbg' => ['required', 'numeric', 'max:12'],
-            'note' => ['required', 'string', 'max:2000'],
-            'location' => ['required', 'integer', 'exists:locations,id'],
+            'name' => ['required', 'string', 'max:100'],
+            'last_name' => ['required', 'string', 'max:100'],
+            'jmbg' => ['required', 'string', 'max:13'],
+            'note' => ['sometimes', 'string', 'max:2000'],
+            'location_id' => ['required', 'integer', 'exists:locations,id'],
         ];
     }
 }

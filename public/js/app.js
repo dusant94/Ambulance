@@ -5333,6 +5333,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "doctors-create",
   props: ["data"],
@@ -5344,6 +5352,7 @@ __webpack_require__.r(__webpack_exports__);
       type: this.data ? this.data.type : null,
       username: this.data ? this.data.username : null,
       password: null,
+      password_confirmation: null,
       types: null
     };
   },
@@ -5375,9 +5384,10 @@ __webpack_require__.r(__webpack_exports__);
       var data = {
         name: this.name,
         last_name: this.last_name,
-        type: this.type,
+        type: this.type.id,
         username: this.username,
-        password: this.password
+        password: this.password,
+        password_confirmation: this.password_confirmation
       };
 
       if (this.data) {
@@ -5520,9 +5530,9 @@ __webpack_require__.r(__webpack_exports__);
       var data = {
         name: this.name,
         last_name: this.last_name,
-        type: this.type.id,
-        username: this.username,
-        password: this.password
+        location_id: this.location.id,
+        note: this.note,
+        jmbg: this.jmbg
       };
 
       if (this.data) {
@@ -28646,6 +28656,32 @@ var render = function () {
                         return
                       }
                       _vm.password = $event.target.value
+                    },
+                  },
+                }),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-sm-12 data-field-col" }, [
+                _c("label", [_vm._v("Confirm Password")]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.password_confirmation,
+                      expression: "password_confirmation",
+                    },
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "password" },
+                  domProps: { value: _vm.password_confirmation },
+                  on: {
+                    input: function ($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.password_confirmation = $event.target.value
                     },
                   },
                 }),

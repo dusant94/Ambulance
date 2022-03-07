@@ -24,10 +24,10 @@ class DoctorCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', 'string', 'max:50'],
-            'last_name' => ['required', 'string', 'max:50'],
+            'name' => ['required', 'string', 'max:100'],
+            'last_name' => ['required', 'string', 'max:100'],
             'username' => ['required', 'string', 'max:32'],
-            'password' => ['required', 'string', 'max:32'],
+            'password' => ['required', 'confirmed' ,'string', 'max:32'],
             'type' => ['required', 'integer', 'exists:typ_doctors,id'],
         ];
     }

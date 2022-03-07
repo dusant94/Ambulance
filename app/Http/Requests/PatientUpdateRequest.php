@@ -24,11 +24,11 @@ class PatientUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['sometimes', 'string', 'max:50'],
-            'last_name' => ['sometimes', 'string', 'max:50'],
-            'jmbg' => ['sometimes', 'numeric', 'max:12'],
+            'name' => ['sometimes', 'string', 'max:100'],
+            'last_name' => ['sometimes', 'string', 'max:100'],
+            'jmbg' => ['sometimes', 'string', 'max:13'],
             'note' => ['sometimes', 'string', 'max:2000'],
-            'location' => ['sometimes', 'integer', 'exists:locations,id'],
+            'location_id' => ['sometimes', 'integer', 'exists:locations,id'],
         ];
     }
 }

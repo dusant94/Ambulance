@@ -49,6 +49,14 @@
                   v-model="password"
                 />
               </div>
+              <div class="col-sm-12 data-field-col">
+                <label>Confirm Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  v-model="password_confirmation"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -81,6 +89,7 @@ export default {
       type: this.data ? this.data.type : null,
       username: this.data ? this.data.username : null,
       password: null,
+      password_confirmation: null,
       types: null,
     };
   },
@@ -109,9 +118,10 @@ export default {
       let data = {
         name: this.name,
         last_name: this.last_name,
-        type: this.type,
+        type: this.type.id,
         username: this.username,
         password: this.password,
+        password_confirmation: this.password_confirmation
       };
       if (this.data) {
         axios.put(this.url, data).then((response) => {
