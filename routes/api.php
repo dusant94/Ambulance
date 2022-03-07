@@ -26,18 +26,18 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/doctors/table', [DoctorController::class, 'table']);
+    Route::get('/patients/table', [PatientController::class, 'table']);
 
     Route::group(['middleware' => 'admin'], function () {
 
         Route::group(['prefix' => '/doctors'], function () {
-            Route::get('/table', [DoctorController::class, 'table']);
             Route::get('/types', [DoctorController::class, 'types']);
             Route::put('/{id}', [DoctorController::class, 'update']);
             Route::post('/', [DoctorController::class, 'store']);
             Route::delete('/{id}', [DoctorController::class, 'destroy']);
         });
         Route::group(['prefix' => '/patients'], function () {
-            Route::get('/table', [PatientController::class, 'table']);
             Route::put('/{id}', [PatientController::class, 'update']);
             Route::post('/', [PatientController::class, 'store']);
             Route::delete('/{id}', [PatientController::class, 'destroy']);
@@ -46,6 +46,9 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::group(['prefix' => '/examinations'], function () {
         Route::get('/table', [ExaminationController::class, 'table']);
+        Route::put('/{id}', [ExaminationController::class, 'update']);
+        Route::post('/', [ExaminationController::class, 'store']);
+        Route::delete('/{id}', [ExaminationController::class, 'destroy']);
     });
     Route::get('locations', [LocationController::class, 'index']);
 });

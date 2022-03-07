@@ -37,7 +37,7 @@ const Routes = [
         path: "/",
         component: DahboardLayout,
         meta: {
-            middleware: "auth"
+            middleware: ["auth"]
         },
         children: [
             {
@@ -54,7 +54,7 @@ const Routes = [
                 path: '/doctors/list',
                 component: DoctorsList,
                 meta: {
-                    middleware: "admin",
+                    middleware: ["admin"],
                     title: `DoctorsList`
                 }
             },
@@ -63,7 +63,7 @@ const Routes = [
                 path: '/patients/list',
                 component: PatientsList,
                 meta: {
-                    middleware: "admin",
+                    middleware: ["admin"],
                     title: `PatientsList`
                 }
             },
@@ -72,7 +72,7 @@ const Routes = [
                 path: '/examinations/list',
                 component: ExaminationsList,
                 meta: {
-                    middleware: "doctor",
+                    middleware: ["doctor", "counter"],
                     title: `ExaminationsList`
                 }
             }
@@ -98,7 +98,7 @@ router.beforeEach((to, from, next) => {
                 next()
             }
             else {
-                if (store.state.auth.user.role == to.meta.middleware) {
+                if (to.meta.middleware.includes(store.state.auth.user.role)) {
                     next()
                 } else {
                     next({ name: "login" })

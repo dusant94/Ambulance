@@ -1423,7 +1423,7 @@ var render = function () {
                     },
                     [
                       _c("div", { staticClass: "user-nav d-sm-flex d-none" }, [
-                        _c("span", { staticClass: "user-name text-bold-600" }, [
+                        _c("h3", { staticClass: "user-name text-bold-600" }, [
                           _vm._v(_vm._s(_vm.user.name)),
                         ]),
                       ]),
@@ -1583,7 +1583,7 @@ var render = function () {
               "li",
               { staticClass: "active nav-item" },
               [
-                _vm.user.role == "doctor"
+                _vm.user.role == "doctor" || _vm.user.role == "counter"
                   ? _c(
                       "router-link",
                       { attrs: { to: { name: "examinations" } } },

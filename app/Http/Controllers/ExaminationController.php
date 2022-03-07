@@ -2,19 +2,66 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ExaminationCreateRequest;
 use App\Models\Examination;
+use Carbon\Carbon;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 
 class ExaminationController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('counter')->only('store', 'destroy');
+     }
+
     public function table()
     {
         $user = Auth::user();
-        $doctors = Examination::with('patient', 'doctor')
-            // ->where('doctor_id', $user->id)
-             ->get();
-        return response()->json($doctors, Response::HTTP_OK);
+        $examinations = Examination::query();
+        if ($user->role == 'doctor') {
+            $examinations = $examinations->where('doctor_id', $user->id)->where('parformed', 0);
+        }
+        $examinations = $examinations->with('patient', 'doctor')->orderBy('created_at', 'desc')->get();
+        return response()->json($examinations, Response::HTTP_OK);
+    }
+    public function store(ExaminationCreateRequest $request)
+    {
+        try {
+            $inputs = $request->validated();
+            $inputs['time_of_examination'] = Carbon::now();
+            $examination = Examination::create($inputs);
+            return response()->json($examination, Response::HTTP_OK);
+        } catch (Exception $e) {
+            return response()->json($e->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
+    }
+    public function update(ExaminationCreateRequest $request, $id)
+    {
+        try {
+            $user = Auth::user();
+            $inputs = $request->validated();
+            $examination = Examination::findOrFail($id);
+            if($user->role == 'doctor'){
+                unset($inputs['patient_id']);
+                unset($inputs['doctor_id']);
+             }
+            $examination = $examination->update($inputs);
+            return response()->json($examination, Response::HTTP_OK);
+        } catch (Exception $e) {
+            return response()->json($e->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
+    }
+    public function destroy($id)
+    {
+        try {
+            $examination = Examination::findOrFail($id);
+            $examination->delete();
+            return response()->json($examination, Response::HTTP_OK);
+        } catch (Exception $e) {
+            return response()->json($e->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
     }
 }

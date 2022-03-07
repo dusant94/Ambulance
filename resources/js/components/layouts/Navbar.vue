@@ -14,7 +14,7 @@
 
 
                         <li class="dropdown dropdown-user nav-item"><a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
-                                <div class="user-nav d-sm-flex d-none"><span class="user-name text-bold-600">{{ user.name }}</span> </div><span> </span>
+                                <div class="user-nav d-sm-flex d-none"><h3 class="user-name text-bold-600">{{ user.name }}</h3> </div><span> </span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right">
                                 <div class="dropdown-divider"></div><a @click="logout" class="dropdown-item"  ><i class="feather icon-power"></i> Logout</a>

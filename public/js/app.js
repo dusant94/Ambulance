@@ -5553,6 +5553,173 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/doctor/ExaminationEdit.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/doctor/ExaminationEdit.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  name: "examintaions-edit",
+  props: ["data"],
+  data: function data() {
+    return {
+      url: this.data ? "/api/examinations/" + this.data.id : "/api/examinations/",
+      diagnosis: this.data ? this.data.diagnosis : null,
+      performed: this.data ? this.data.performed : false,
+      patient: this.data ? this.data.patient : null,
+      doctor: this.data ? this.data.doctor : null,
+      doctors: [],
+      patients: [],
+      user: this.$store.state.auth.user
+    };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    axios.get("/api/doctors/table").then(function (response) {
+      _this.doctors = response.data;
+    });
+    axios.get("/api/patients/table").then(function (response) {
+      _this.patients = response.data;
+    });
+  },
+  methods: {
+    // validateForm() {
+    //     this.errors = [];
+    //     if (!this.chassis_number)
+    //         this.errors.push(this.__('validations.chassis_number'));
+    //     if (this.errors.length === 0) return false;
+    //     else
+    //         this.errors.forEach((error) => {
+    //             toastr.error(error);
+    //         });
+    //     return true;
+    // },
+    save: function save() {
+      var _this2 = this;
+
+      // if (this.validateForm()) {
+      //     return;
+      // }
+      var data = {
+        diagnosis: this.diagnosis,
+        parformed: this.performed,
+        patient_id: this.patient.id,
+        doctor_id: this.doctor.id
+      };
+
+      if (this.data) {
+        axios.put(this.url, data).then(function (response) {
+          _this2.$emit("refreshData");
+        });
+      } else {
+        axios.post(this.url, data).then(function (response) {
+          _this2.$emit("refreshData");
+        });
+      }
+    },
+    closeSidebar: function closeSidebar() {
+      this.$emit("closeSidebar");
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./resources/js/app.js":
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
@@ -5590,6 +5757,7 @@ window.Vue = (__webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js
 
 Vue.component('doctors-create', (__webpack_require__(/*! ./components/admin/DoctorsCreate.vue */ "./resources/js/components/admin/DoctorsCreate.vue")["default"]));
 Vue.component('patients-create', (__webpack_require__(/*! ./components/admin/PatientsCreate.vue */ "./resources/js/components/admin/PatientsCreate.vue")["default"]));
+Vue.component('examinations-edit', (__webpack_require__(/*! ./components/doctor/ExaminationEdit.vue */ "./resources/js/components/doctor/ExaminationEdit.vue")["default"]));
 
 
 var app = new Vue({
@@ -5705,7 +5873,7 @@ var Routes = [{
   path: "/",
   component: DahboardLayout,
   meta: {
-    middleware: "auth"
+    middleware: ["auth"]
   },
   children: [{
     name: "dashboard",
@@ -5719,7 +5887,7 @@ var Routes = [{
     path: '/doctors/list',
     component: DoctorsList,
     meta: {
-      middleware: "admin",
+      middleware: ["admin"],
       title: "DoctorsList"
     }
   }, {
@@ -5727,7 +5895,7 @@ var Routes = [{
     path: '/patients/list',
     component: PatientsList,
     meta: {
-      middleware: "admin",
+      middleware: ["admin"],
       title: "PatientsList"
     }
   }, {
@@ -5735,7 +5903,7 @@ var Routes = [{
     path: '/examinations/list',
     component: ExaminationsList,
     meta: {
-      middleware: "doctor",
+      middleware: ["doctor", "counter"],
       title: "ExaminationsList"
     }
   }]
@@ -5760,7 +5928,7 @@ router.beforeEach(function (to, from, next) {
       if (typeof to.meta.middleware === 'undefined') {
         next();
       } else {
-        if (_store__WEBPACK_IMPORTED_MODULE_0__["default"].state.auth.user.role == to.meta.middleware) {
+        if (to.meta.middleware.includes(_store__WEBPACK_IMPORTED_MODULE_0__["default"].state.auth.user.role)) {
           next();
         } else {
           next({
@@ -28396,6 +28564,45 @@ component.options.__file = "resources/js/components/admin/PatientsCreate.vue"
 
 /***/ }),
 
+/***/ "./resources/js/components/doctor/ExaminationEdit.vue":
+/*!************************************************************!*\
+  !*** ./resources/js/components/doctor/ExaminationEdit.vue ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _ExaminationEdit_vue_vue_type_template_id_11330b16___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ExaminationEdit.vue?vue&type=template&id=11330b16& */ "./resources/js/components/doctor/ExaminationEdit.vue?vue&type=template&id=11330b16&");
+/* harmony import */ var _ExaminationEdit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ExaminationEdit.vue?vue&type=script&lang=js& */ "./resources/js/components/doctor/ExaminationEdit.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _ExaminationEdit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ExaminationEdit_vue_vue_type_template_id_11330b16___WEBPACK_IMPORTED_MODULE_0__.render,
+  _ExaminationEdit_vue_vue_type_template_id_11330b16___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/doctor/ExaminationEdit.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/components/admin/DoctorsCreate.vue?vue&type=script&lang=js&":
 /*!**********************************************************************************!*\
   !*** ./resources/js/components/admin/DoctorsCreate.vue?vue&type=script&lang=js& ***!
@@ -28425,6 +28632,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PatientsCreate_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./PatientsCreate.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/admin/PatientsCreate.vue?vue&type=script&lang=js&");
  /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PatientsCreate_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/doctor/ExaminationEdit.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************!*\
+  !*** ./resources/js/components/doctor/ExaminationEdit.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ExaminationEdit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./ExaminationEdit.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/doctor/ExaminationEdit.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ExaminationEdit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
@@ -28458,6 +28681,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PatientsCreate_vue_vue_type_template_id_0856c956___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PatientsCreate_vue_vue_type_template_id_0856c956___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./PatientsCreate.vue?vue&type=template&id=0856c956& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/admin/PatientsCreate.vue?vue&type=template&id=0856c956&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/doctor/ExaminationEdit.vue?vue&type=template&id=11330b16&":
+/*!*******************************************************************************************!*\
+  !*** ./resources/js/components/doctor/ExaminationEdit.vue?vue&type=template&id=11330b16& ***!
+  \*******************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExaminationEdit_vue_vue_type_template_id_11330b16___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExaminationEdit_vue_vue_type_template_id_11330b16___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExaminationEdit_vue_vue_type_template_id_11330b16___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./ExaminationEdit.vue?vue&type=template&id=11330b16& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/doctor/ExaminationEdit.vue?vue&type=template&id=11330b16&");
 
 
 /***/ }),
@@ -28973,6 +29213,305 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-md-12" }, [
       _c("span", [_vm._v("Note")]),
+    ])
+  },
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/doctor/ExaminationEdit.vue?vue&type=template&id=11330b16&":
+/*!**********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/doctor/ExaminationEdit.vue?vue&type=template&id=11330b16& ***!
+  \**********************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function () {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c(
+      "div",
+      {
+        staticClass:
+          "div mt-2 px-2 d-flex new-data-title justify-content-between",
+      },
+      [
+        _c("div", [
+          _c("h4", { staticClass: "text-uppercase" }, [
+            _vm._v(
+              "\n        " + _vm._s(_vm.data ? "Edit" : "Create") + "\n      "
+            ),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "hide-data-sidebar", on: { click: _vm.closeSidebar } },
+          [_c("i", { staticClass: "feather icon-x" })]
+        ),
+      ]
+    ),
+    _vm._v(" "),
+    _c("div", { staticClass: "data-items pb-3" }, [
+      _c("div", { staticClass: "data-items pb-3" }, [
+        _c("div", { staticClass: "data-fields px-2 mt-3" }, [
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "col-sm-12 data-field-col" }, [
+                _c("label", [_vm._v("Patient")]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-md-8" }, [
+                  _vm.user.role == "doctor" && _vm.data
+                    ? _c("p", [_vm._v(_vm._s(_vm.patient.name))])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.user.role !== "doctor"
+                    ? _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.patient,
+                              expression: "patient",
+                            },
+                          ],
+                          staticClass: "form-control square",
+                          on: {
+                            change: function ($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function (o) {
+                                  return o.selected
+                                })
+                                .map(function (o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.patient = $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            },
+                          },
+                        },
+                        _vm._l(_vm.patients, function (patient) {
+                          return _c(
+                            "option",
+                            { key: patient.id, domProps: { value: patient } },
+                            [
+                              _vm._v(
+                                "\n                    " +
+                                  _vm._s(patient.name) +
+                                  "\n                  "
+                              ),
+                            ]
+                          )
+                        }),
+                        0
+                      )
+                    : _vm._e(),
+                ]),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-sm-12 data-field-col" }, [
+                _c("label", [_vm._v("Doctor")]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-md-8" }, [
+                  _vm.user.role == "doctor" && _vm.data
+                    ? _c("p", [_vm._v(_vm._s(_vm.doctor.name))])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.user.role !== "doctor"
+                    ? _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.doctor,
+                              expression: "doctor",
+                            },
+                          ],
+                          staticClass: "form-control square",
+                          on: {
+                            change: function ($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function (o) {
+                                  return o.selected
+                                })
+                                .map(function (o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.doctor = $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            },
+                          },
+                        },
+                        _vm._l(_vm.doctors, function (doctor) {
+                          return _c(
+                            "option",
+                            { key: doctor.id, domProps: { value: doctor } },
+                            [
+                              _vm._v(
+                                "\n                    " +
+                                  _vm._s(doctor.name) +
+                                  "\n                  "
+                              ),
+                            ]
+                          )
+                        }),
+                        0
+                      )
+                    : _vm._e(),
+                ]),
+              ]),
+              _vm._v(" "),
+              _vm._m(0),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-md-12" }, [
+                _c("textarea", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.diagnosis,
+                      expression: "diagnosis",
+                    },
+                  ],
+                  staticClass: "form-control square",
+                  domProps: { value: _vm.diagnosis },
+                  on: {
+                    input: function ($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.diagnosis = $event.target.value
+                    },
+                  },
+                }),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-sm-12 data-field-col" }, [
+                _c("label", [_vm._v("Performed")]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-md-12" }, [
+                  _c("fieldset", { staticClass: "checkbox" }, [
+                    _c(
+                      "div",
+                      { staticClass: "vs-checkbox-con vs-checkbox-primary" },
+                      [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.performed,
+                              expression: "performed",
+                            },
+                          ],
+                          attrs: { type: "checkbox" },
+                          domProps: {
+                            checked: Array.isArray(_vm.performed)
+                              ? _vm._i(_vm.performed, null) > -1
+                              : _vm.performed,
+                          },
+                          on: {
+                            change: function ($event) {
+                              var $$a = _vm.performed,
+                                $$el = $event.target,
+                                $$c = $$el.checked ? true : false
+                              if (Array.isArray($$a)) {
+                                var $$v = null,
+                                  $$i = _vm._i($$a, $$v)
+                                if ($$el.checked) {
+                                  $$i < 0 && (_vm.performed = $$a.concat([$$v]))
+                                } else {
+                                  $$i > -1 &&
+                                    (_vm.performed = $$a
+                                      .slice(0, $$i)
+                                      .concat($$a.slice($$i + 1)))
+                                }
+                              } else {
+                                _vm.performed = $$c
+                              }
+                            },
+                          },
+                        }),
+                        _vm._v(" "),
+                        _vm._m(1),
+                      ]
+                    ),
+                  ]),
+                ]),
+              ]),
+            ]),
+          ]),
+        ]),
+      ]),
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "add-data-footer d-flex justify-content-around px-3" },
+      [
+        _c("div", { staticClass: "add-data-btn" }, [
+          _c(
+            "button",
+            { staticClass: "btn btn-primary", on: { click: _vm.save } },
+            [
+              _vm._v(
+                "\n        " +
+                  _vm._s(_vm.data ? "Update " : "Create ") +
+                  "\n      "
+              ),
+            ]
+          ),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "cancel-data-btn" }, [
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-outline-danger",
+              on: { click: _vm.closeSidebar },
+            },
+            [_vm._v("\n        Cancel\n      ")]
+          ),
+        ]),
+      ]
+    ),
+  ])
+}
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-12" }, [
+      _c("span", [_vm._v("Diagnosis")]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "vs-checkbox" }, [
+      _c("span", { staticClass: "vs-checkbox--check" }, [
+        _c("i", { staticClass: "vs-icon feather icon-check" }),
+      ]),
     ])
   },
 ]

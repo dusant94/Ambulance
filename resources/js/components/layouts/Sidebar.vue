@@ -73,7 +73,7 @@
           >
         </li>
         <li class="active nav-item">
-          <router-link v-if="user.role == 'doctor'" :to="{ name: 'examinations' }"
+          <router-link v-if="user.role == 'doctor' || user.role == 'counter'" :to="{ name: 'examinations' }"
             ><i class="feather icon-circle"></i
             ><span class="menu-title" data-i18n="Chat"
               >Examinations</span

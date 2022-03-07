@@ -14,8 +14,9 @@ class Examination extends Model
         'patient_id',
         'doctor_id',
         'diagnosis',
+        'parformed',
+        'time_of_examination',
         'performed',
-        'time_of_examination'
     ];
 
     public function patient(){

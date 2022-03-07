@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             AdminSeeder::class,
+            CounterSeeder::class,
             TypDoctorSeeder::class,
         ]);
         \App\Models\Location::factory(15)->create();
