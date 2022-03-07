@@ -192,6 +192,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -719,63 +722,84 @@ var render = function () {
                 _c(
                   "tbody",
                   _vm._l(_vm.examinations, function (examination) {
-                    return _c("tr", { key: examination.id }, [
-                      _c("td", [_vm._v(_vm._s(examination.id))]),
-                      _vm._v(" "),
-                      _c("td", { staticClass: "product-name" }, [
-                        _vm._v(_vm._s(examination.patient.name)),
-                      ]),
-                      _vm._v(" "),
-                      _c("td", { staticClass: "product-name" }, [
-                        _vm._v(_vm._s(examination.doctor.name)),
-                      ]),
-                      _vm._v(" "),
-                      _c("td", { staticClass: "product-name" }, [
-                        _vm._v(_vm._s(examination.diagnosis)),
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "td",
-                        { staticClass: "product-action fonticon-wrap" },
-                        [
-                          _c(
-                            "a",
-                            {
-                              staticClass: "btn btn-flat-success square",
-                              attrs: { href: "#" },
-                              on: {
-                                click: function ($event) {
-                                  return _vm.openSidebar(
-                                    "examinations-edit",
-                                    examination
-                                  )
-                                },
-                              },
-                            },
-                            [_c("i", { staticClass: "feather icon-edit" })]
+                    return _c(
+                      "tr",
+                      {
+                        key: examination.id,
+                        style: [
+                          examination.performed
+                            ? { background: "#94e394" }
+                            : { background: "#e3acac" },
+                        ],
+                      },
+                      [
+                        _c("td", [_vm._v(_vm._s(examination.id))]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _vm._v(
+                            _vm._s(examination.performed ? "YES" : "NO") + "  "
                           ),
-                          _vm._v(" "),
-                          _vm.user.role == "counter"
-                            ? _c(
-                                "a",
-                                {
-                                  staticClass: "btn btn-flat-danger square",
-                                  attrs: { href: "#" },
-                                  on: {
-                                    click: function ($event) {
-                                      return _vm.openDeleteModal(
-                                        examination.id,
-                                        examination.patient.name
-                                      )
-                                    },
+                        ]),
+                        _vm._v(" "),
+                        _c("td", { staticClass: "product-name" }, [
+                          _vm._v(_vm._s(examination.patient.name)),
+                        ]),
+                        _vm._v(" "),
+                        _c("td", { staticClass: "product-name" }, [
+                          _vm._v(_vm._s(examination.doctor.name)),
+                        ]),
+                        _vm._v(" "),
+                        _c("td", { staticClass: "product-name" }, [
+                          _vm._v(_vm._s(examination.diagnosis)),
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "td",
+                          { staticClass: "product-action fonticon-wrap" },
+                          [
+                            _c(
+                              "a",
+                              {
+                                staticClass: "btn btn-flat-success square",
+                                attrs: { href: "#" },
+                                on: {
+                                  click: function ($event) {
+                                    return _vm.openSidebar(
+                                      "examinations-edit",
+                                      examination
+                                    )
                                   },
                                 },
-                                [_c("i", { staticClass: "feather icon-trash" })]
-                              )
-                            : _vm._e(),
-                        ]
-                      ),
-                    ])
+                              },
+                              [_c("i", { staticClass: "feather icon-edit" })]
+                            ),
+                            _vm._v(" "),
+                            _vm.user.role == "counter"
+                              ? _c(
+                                  "a",
+                                  {
+                                    staticClass: "btn btn-flat-danger square",
+                                    attrs: { href: "#" },
+                                    on: {
+                                      click: function ($event) {
+                                        return _vm.openDeleteModal(
+                                          examination.id,
+                                          examination.patient.name
+                                        )
+                                      },
+                                    },
+                                  },
+                                  [
+                                    _c("i", {
+                                      staticClass: "feather icon-trash",
+                                    }),
+                                  ]
+                                )
+                              : _vm._e(),
+                          ]
+                        ),
+                      ]
+                    )
                   }),
                   0
                 ),
@@ -840,6 +864,8 @@ var staticRenderFns = [
     return _c("thead", [
       _c("tr", [
         _c("th", [_vm._v("ID")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Completed")]),
         _vm._v(" "),
         _c("th", [_vm._v("Patient")]),
         _vm._v(" "),

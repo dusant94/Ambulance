@@ -5697,7 +5697,7 @@ __webpack_require__.r(__webpack_exports__);
       // }
       var data = {
         diagnosis: this.diagnosis,
-        parformed: this.performed,
+        performed: this.performed,
         patient_id: this.patient.id,
         doctor_id: this.doctor.id
       };

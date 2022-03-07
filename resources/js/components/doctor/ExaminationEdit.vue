@@ -129,7 +129,7 @@ export default {
       // }
       let data = {
         diagnosis: this.diagnosis,
-        parformed: this.performed,
+        performed: this.performed,
         patient_id: this.patient.id,
         doctor_id: this.doctor.id,
       };

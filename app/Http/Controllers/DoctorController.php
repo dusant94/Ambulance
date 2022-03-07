@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\Hash;
 
 class DoctorController extends Controller
 {
-    //
 
     public function table(){
 

@@ -30,14 +30,17 @@
             <thead>
               <tr>
                 <th>ID</th>
+                <th>Completed</th>
                 <th>Patient</th>
                 <th>Doctor</th>
                 <th>Diagnosis</th>
                </tr>
             </thead>
             <tbody>
-              <tr v-for="examination in examinations" :key="examination.id">
-                <td>{{ examination.id }}</td>
+              <tr v-for="examination in examinations" :key="examination.id"
+               :style="[examination.performed ? {'background': '#94e394'} : {'background': '#e3acac'}]">
+                <td >{{ examination.id }}</td>
+                <td>{{ examination.performed ? "YES" : "NO" }}  </td>
                 <td class="product-name">{{ examination.patient.name }}</td>
                 <td class="product-name">{{ examination.doctor.name }}</td>
                 <td class="product-name">{{ examination.diagnosis }}</td>
