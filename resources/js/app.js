@@ -30,7 +30,7 @@ Vue.use(Notifications);
  */
  Vue.component('doctors-create', require('./components/admin/DoctorsCreate.vue').default);
  Vue.component('patients-create', require('./components/admin/PatientsCreate.vue').default);
- Vue.component('examinations-edit', require('./components/examination/ExaminationEdit.vue').default);
+ Vue.component('examinations-create', require('./components/examination/ExaminationCreate.vue').default);
 
  import router from './router'
  import store from './store'

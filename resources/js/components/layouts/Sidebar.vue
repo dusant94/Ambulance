@@ -56,15 +56,15 @@
         id="main-menu-navigation"
         data-menu="menu-navigation"
       >
-        <li class="active nav-item">
+        <li class="nav-item" :class="this.$route.name == 'doctors' ? 'active' : ''">
           <router-link v-if="user.role == 'admin'" :to="{ name: 'doctors' }"
             ><i class="feather icon-circle"></i
             ><span class="menu-title" data-i18n="Chat"
-              >Doctors</span
+              >Doctors </span
             ></router-link
           >
         </li>
-        <li class="nav-item">
+         <li class="nav-item" :class="this.$route.name == 'patients' ? 'active' : ''">
           <router-link v-if="user.role == 'admin'" :to="{ name: 'patients' }"
             ><i class="feather icon-circle"></i
             ><span class="menu-title" data-i18n="Chat"
@@ -72,7 +72,7 @@
             ></router-link
           >
         </li>
-        <li class="active nav-item">
+        <li class="nav-item" :class="this.$route.name == 'examinations' ? 'active' : ''">
           <router-link v-if="user.role == 'doctor' || user.role == 'counter'" :to="{ name: 'examinations' }"
             ><i class="feather icon-circle"></i
             ><span class="menu-title" data-i18n="Chat"

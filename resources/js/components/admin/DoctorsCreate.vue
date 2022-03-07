@@ -23,7 +23,10 @@
                 <input type="text" class="form-control" v-model="last_name" />
               </div>
              <div class="col-sm-12 data-field-col">
+              <div class="col-md-8">
+
               <label>Type</label>
+              </div>
               <div class="col-md-8">
                 <select class="form-control square" v-model="type">
                   <option :value="type" v-for="type in types" :key="type.id">
@@ -33,13 +36,19 @@
               </div>
             </div>
             <div class="col-sm-12 data-field-col">
+              <div class="col-md-8">
+
               <label>Username</label>
+              </div>
               <div class="col-md-12">
                 <input type="text" class="form-control" v-model="username" />
               </div>
             </div>
             <div class="col-sm-12 data-field-col">
+              <div class="col-md-8">
+
               <label>Password</label>
+              </div>
               <div class="col-md-12">
                 <input
                   type="password"
@@ -49,7 +58,10 @@
               </div>
             </div>
             <div class="col-sm-12 data-field-col">
+              <div class="col-md-8">
+
               <label>Confirm Password</label>
+              </div>
               <div class="col-md-12">
                 <input
                   type="password"

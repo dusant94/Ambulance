@@ -19,12 +19,18 @@
               <input type="text" class="form-control" v-model="name" />
             </div>
             <div class="col-sm-6 data-field-col">
+              <div class="col-md-8">
+
               <label>Last name</label>
+              </div>
               <input type="text" class="form-control" v-model="last_name" />
             </div>
             <div class="col-sm-12 data-field-col">
-              <label>Locations</label>
               <div class="col-md-8">
+
+              <label>Locations</label>
+              </div>
+              <div class="col-md-12">
                 <select class="form-control square" v-model="location">
                   <option
                     :value="location"

@@ -16,7 +16,7 @@
           <a
             href="#/"
             class="btn-icon btn btn-primary"
-            @click="openSidebar('examinations-edit')"
+            @click="openSidebar('examinations-create')"
           >
             <i class="feather icon-plus"></i> Add
           </a>
@@ -30,18 +30,19 @@
             <thead>
               <tr>
                 <th>#</th>
-                <th>ID</th>
+                <th>Time of Examination</th>
                 <th>Completed</th>
                 <th>Patient</th>
                 <th>Doctor</th>
                 <th>Diagnosis</th>
-               </tr>
+                <th> </th>
+                </tr>
             </thead>
             <tbody>
               <tr v-for="(examination, index) in examinations" :key="examination.id"
-               :style="[examination.performed ? {'background': 'white'} : {'background': '#e3acac'}]">
+               :style="[examination.performed ? {'background': 'white'} : {'background': '#c4c4c4'}]">
                 <td >{{ index + 1 }}</td>
-                <td >{{ examination.id }}</td>
+                <td >{{ examination.time_of_examination }}</td>
                 <td>{{ examination.performed ? "YES" : "NO" }}  </td>
                 <td class="product-name">{{ examination.patient.name }}</td>
                 <td class="product-name">{{ examination.doctor.name }}</td>
@@ -50,7 +51,7 @@
                   <a
                     href="#"
                     class="btn btn-flat-success square"
-                    @click="openSidebar('examinations-edit', examination)"
+                    @click="openSidebar('examinations-create', examination)"
                     ><i class="feather icon-edit"></i
                   ></a>
                   <a

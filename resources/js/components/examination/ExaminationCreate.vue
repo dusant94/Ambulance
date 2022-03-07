@@ -15,23 +15,29 @@
         <div class="data-fields px-2 mt-3">
           <div class="row">
             <div class="row">
-                  <div class="col-sm-12 data-field-col">
-                <label>Time of Examination </label>
+              <div class="col-sm-12 data-field-col">
                 <div class="col-md-12">
-                  <b v-if="user.role == 'doctor' && data">{{ time_of_examination }}</b>
-                    <flat-pickr
-                      v-model="time_of_examination"
+                  <label>Time of Examination </label>
+                </div>
+                <div class="col-md-12">
+                  <b v-if="user.role == 'doctor' && data">{{
+                    time_of_examination
+                  }}</b>
+                  <flat-pickr
+                    v-if="user.role !== 'doctor'"
+                    v-model="time_of_examination"
                     :config="configforpicker"
-                      class="form-control"
-                      style="background-color: #10163a"
-                      placeholder="Select date"
-                      name="date"
-
-                    />
+                    class="form-control"
+                    style="background-color: #10163a"
+                    placeholder="Select date"
+                    name="date"
+                  />
                 </div>
               </div>
               <div class="col-sm-12 data-field-col">
-                <label>Patient </label>
+                <div class="col-md-12">
+                  <label>Patient </label>
+                </div>
                 <div class="col-md-12">
                   <b v-if="user.role == 'doctor' && data">{{ patient.name }}</b>
                   <select
@@ -50,7 +56,10 @@
                 </div>
               </div>
               <div class="col-sm-12 data-field-col">
-                <label>Doctor</label>
+                <div class="col-md-12">
+                  <label>Doctor</label>
+                </div>
+
                 <div class="col-md-12">
                   <b v-if="user.role == 'doctor' && data">{{ doctor.name }}</b>
                   <select
@@ -69,7 +78,10 @@
                 </div>
               </div>
               <div class="col-sm-12 data-field-col">
-                <label>Diagnosis</label>
+                <div class="col-md-12">
+                  <label>Diagnosis</label>
+                </div>
+
                 <div class="col-md-12">
                   <textarea
                     class="form-control square"
@@ -77,7 +89,10 @@
                   ></textarea>
                 </div>
                 <div class="col-sm-12 data-field-col">
-                  <label>Performed</label>
+                  <div class="col-md-12">
+                    <label>Performed</label>
+                  </div>
+
                   <div class="col-md-12">
                     <fieldset class="checkbox">
                       <div class="vs-checkbox-con vs-checkbox-primary">
@@ -111,12 +126,12 @@
 </template>
 
 <script>
-import flatPickr from 'vue-flatpickr-component';
-import 'flatpickr/dist/flatpickr.css';
+import flatPickr from "vue-flatpickr-component";
+import "flatpickr/dist/flatpickr.css";
 
 export default {
   components: { flatPickr },
-  name: "examintaions-edit",
+  name: "examintaions-create",
   props: ["data"],
   data() {
     return {
@@ -137,11 +152,12 @@ export default {
         altInput: true,
         dateFormat: "d.m.Y H:i",
         enableTime: true,
+        time_24hr: true,
       },
     };
   },
   created() {
-     axios.get("/api/doctors/table").then((response) => {
+    axios.get("/api/doctors/table").then((response) => {
       this.doctors = response.data;
     });
     axios.get("/api/patients/table").then((response) => {

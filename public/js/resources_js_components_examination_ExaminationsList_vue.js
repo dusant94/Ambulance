@@ -205,6 +205,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -678,7 +679,7 @@ var render = function () {
                       attrs: { href: "#/" },
                       on: {
                         click: function ($event) {
-                          return _vm.openSidebar("examinations-edit")
+                          return _vm.openSidebar("examinations-create")
                         },
                       },
                     },
@@ -715,13 +716,15 @@ var render = function () {
                         style: [
                           examination.performed
                             ? { background: "white" }
-                            : { background: "#e3acac" },
+                            : { background: "#c4c4c4" },
                         ],
                       },
                       [
                         _c("td", [_vm._v(_vm._s(index + 1))]),
                         _vm._v(" "),
-                        _c("td", [_vm._v(_vm._s(examination.id))]),
+                        _c("td", [
+                          _vm._v(_vm._s(examination.time_of_examination)),
+                        ]),
                         _vm._v(" "),
                         _c("td", [
                           _vm._v(
@@ -758,7 +761,7 @@ var render = function () {
                                 on: {
                                   click: function ($event) {
                                     return _vm.openSidebar(
-                                      "examinations-edit",
+                                      "examinations-create",
                                       examination
                                     )
                                   },
@@ -858,7 +861,7 @@ var staticRenderFns = [
       _c("tr", [
         _c("th", [_vm._v("#")]),
         _vm._v(" "),
-        _c("th", [_vm._v("ID")]),
+        _c("th", [_vm._v("Time of Examination")]),
         _vm._v(" "),
         _c("th", [_vm._v("Completed")]),
         _vm._v(" "),
@@ -867,6 +870,8 @@ var staticRenderFns = [
         _c("th", [_vm._v("Doctor")]),
         _vm._v(" "),
         _c("th", [_vm._v("Diagnosis")]),
+        _vm._v(" "),
+        _c("th"),
       ]),
     ])
   },

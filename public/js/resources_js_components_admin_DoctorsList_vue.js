@@ -201,7 +201,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -706,8 +705,6 @@ var render = function () {
                     return _c("tr", { key: doctor.id }, [
                       _c("td", [_vm._v(_vm._s(index + 1))]),
                       _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(doctor.id))]),
-                      _vm._v(" "),
                       _c("td", { staticClass: "product-name" }, [
                         _vm._v(_vm._s(doctor.name)),
                       ]),
@@ -825,13 +822,13 @@ var staticRenderFns = [
       _c("tr", [
         _c("th", [_vm._v("#")]),
         _vm._v(" "),
-        _c("th", [_vm._v("ID")]),
-        _vm._v(" "),
         _c("th", [_vm._v("Name")]),
         _vm._v(" "),
         _c("th", [_vm._v("Last Name")]),
         _vm._v(" "),
         _c("th", [_vm._v("Type")]),
+        _vm._v(" "),
+        _c("th"),
       ]),
     ])
   },

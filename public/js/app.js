@@ -5339,6 +5339,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "doctors-create",
   props: ["data"],
@@ -5486,6 +5498,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "patients-create",
   props: ["data"],
@@ -5555,10 +5573,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/examination/ExaminationEdit.vue?vue&type=script&lang=js&":
-/*!**********************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/examination/ExaminationEdit.vue?vue&type=script&lang=js& ***!
-  \**********************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/examination/ExaminationCreate.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/examination/ExaminationCreate.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -5681,13 +5699,28 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
     flatPickr: (vue_flatpickr_component__WEBPACK_IMPORTED_MODULE_0___default())
   },
-  name: "examintaions-edit",
+  name: "examintaions-create",
   props: ["data"],
   data: function data() {
     return {
@@ -5705,7 +5738,8 @@ __webpack_require__.r(__webpack_exports__);
         altFormat: "d.m.Y H:i",
         altInput: true,
         dateFormat: "d.m.Y H:i",
-        enableTime: true
+        enableTime: true,
+        time_24hr: true
       }
     };
   },
@@ -5808,7 +5842,7 @@ Vue.use((vue_notification__WEBPACK_IMPORTED_MODULE_0___default()));
 
 Vue.component('doctors-create', (__webpack_require__(/*! ./components/admin/DoctorsCreate.vue */ "./resources/js/components/admin/DoctorsCreate.vue")["default"]));
 Vue.component('patients-create', (__webpack_require__(/*! ./components/admin/PatientsCreate.vue */ "./resources/js/components/admin/PatientsCreate.vue")["default"]));
-Vue.component('examinations-edit', (__webpack_require__(/*! ./components/examination/ExaminationEdit.vue */ "./resources/js/components/examination/ExaminationEdit.vue")["default"]));
+Vue.component('examinations-create', (__webpack_require__(/*! ./components/examination/ExaminationCreate.vue */ "./resources/js/components/examination/ExaminationCreate.vue")["default"]));
 
 
 var app = new Vue({
@@ -31759,10 +31793,10 @@ component.options.__file = "resources/js/components/admin/PatientsCreate.vue"
 
 /***/ }),
 
-/***/ "./resources/js/components/examination/ExaminationEdit.vue":
-/*!*****************************************************************!*\
-  !*** ./resources/js/components/examination/ExaminationEdit.vue ***!
-  \*****************************************************************/
+/***/ "./resources/js/components/examination/ExaminationCreate.vue":
+/*!*******************************************************************!*\
+  !*** ./resources/js/components/examination/ExaminationCreate.vue ***!
+  \*******************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -31770,8 +31804,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _ExaminationEdit_vue_vue_type_template_id_6969243c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ExaminationEdit.vue?vue&type=template&id=6969243c& */ "./resources/js/components/examination/ExaminationEdit.vue?vue&type=template&id=6969243c&");
-/* harmony import */ var _ExaminationEdit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ExaminationEdit.vue?vue&type=script&lang=js& */ "./resources/js/components/examination/ExaminationEdit.vue?vue&type=script&lang=js&");
+/* harmony import */ var _ExaminationCreate_vue_vue_type_template_id_431b47d4___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ExaminationCreate.vue?vue&type=template&id=431b47d4& */ "./resources/js/components/examination/ExaminationCreate.vue?vue&type=template&id=431b47d4&");
+/* harmony import */ var _ExaminationCreate_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ExaminationCreate.vue?vue&type=script&lang=js& */ "./resources/js/components/examination/ExaminationCreate.vue?vue&type=script&lang=js&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -31781,9 +31815,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 ;
 var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _ExaminationEdit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _ExaminationEdit_vue_vue_type_template_id_6969243c___WEBPACK_IMPORTED_MODULE_0__.render,
-  _ExaminationEdit_vue_vue_type_template_id_6969243c___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  _ExaminationCreate_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ExaminationCreate_vue_vue_type_template_id_431b47d4___WEBPACK_IMPORTED_MODULE_0__.render,
+  _ExaminationCreate_vue_vue_type_template_id_431b47d4___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
   false,
   null,
   null,
@@ -31793,7 +31827,7 @@ var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/components/examination/ExaminationEdit.vue"
+component.options.__file = "resources/js/components/examination/ExaminationCreate.vue"
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
 
 /***/ }),
@@ -31830,10 +31864,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/examination/ExaminationEdit.vue?vue&type=script&lang=js&":
-/*!******************************************************************************************!*\
-  !*** ./resources/js/components/examination/ExaminationEdit.vue?vue&type=script&lang=js& ***!
-  \******************************************************************************************/
+/***/ "./resources/js/components/examination/ExaminationCreate.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************!*\
+  !*** ./resources/js/components/examination/ExaminationCreate.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -31841,8 +31875,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ExaminationEdit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./ExaminationEdit.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/examination/ExaminationEdit.vue?vue&type=script&lang=js&");
- /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ExaminationEdit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ExaminationCreate_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./ExaminationCreate.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/examination/ExaminationCreate.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ExaminationCreate_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
@@ -31880,19 +31914,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/examination/ExaminationEdit.vue?vue&type=template&id=6969243c&":
-/*!************************************************************************************************!*\
-  !*** ./resources/js/components/examination/ExaminationEdit.vue?vue&type=template&id=6969243c& ***!
-  \************************************************************************************************/
+/***/ "./resources/js/components/examination/ExaminationCreate.vue?vue&type=template&id=431b47d4&":
+/*!**************************************************************************************************!*\
+  !*** ./resources/js/components/examination/ExaminationCreate.vue?vue&type=template&id=431b47d4& ***!
+  \**************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExaminationEdit_vue_vue_type_template_id_6969243c___WEBPACK_IMPORTED_MODULE_0__.render),
-/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExaminationEdit_vue_vue_type_template_id_6969243c___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExaminationCreate_vue_vue_type_template_id_431b47d4___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExaminationCreate_vue_vue_type_template_id_431b47d4___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExaminationEdit_vue_vue_type_template_id_6969243c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./ExaminationEdit.vue?vue&type=template&id=6969243c& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/examination/ExaminationEdit.vue?vue&type=template&id=6969243c&");
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExaminationCreate_vue_vue_type_template_id_431b47d4___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./ExaminationCreate.vue?vue&type=template&id=431b47d4& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/examination/ExaminationCreate.vue?vue&type=template&id=431b47d4&");
 
 
 /***/ }),
@@ -31994,7 +32028,7 @@ var render = function () {
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "col-sm-12 data-field-col" }, [
-              _c("label", [_vm._v("Type")]),
+              _vm._m(0),
               _vm._v(" "),
               _c("div", { staticClass: "col-md-8" }, [
                 _c(
@@ -32044,7 +32078,7 @@ var render = function () {
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "col-sm-12 data-field-col" }, [
-              _c("label", [_vm._v("Username")]),
+              _vm._m(1),
               _vm._v(" "),
               _c("div", { staticClass: "col-md-12" }, [
                 _c("input", {
@@ -32072,7 +32106,7 @@ var render = function () {
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "col-sm-12 data-field-col" }, [
-              _c("label", [_vm._v("Password")]),
+              _vm._m(2),
               _vm._v(" "),
               _c("div", { staticClass: "col-md-12" }, [
                 _c("input", {
@@ -32100,7 +32134,7 @@ var render = function () {
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "col-sm-12 data-field-col" }, [
-              _c("label", [_vm._v("Confirm Password")]),
+              _vm._m(3),
               _vm._v(" "),
               _c("div", { staticClass: "col-md-12" }, [
                 _c("input", {
@@ -32160,7 +32194,40 @@ var render = function () {
     ),
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-8" }, [
+      _c("label", [_vm._v("Type")]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-8" }, [
+      _c("label", [_vm._v("Username")]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-8" }, [
+      _c("label", [_vm._v("Password")]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-8" }, [
+      _c("label", [_vm._v("Confirm Password")]),
+    ])
+  },
+]
 render._withStripped = true
 
 
@@ -32238,7 +32305,7 @@ var render = function () {
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "col-sm-6 data-field-col" }, [
-              _c("label", [_vm._v("Last name")]),
+              _vm._m(0),
               _vm._v(" "),
               _c("input", {
                 directives: [
@@ -32264,9 +32331,9 @@ var render = function () {
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "col-sm-12 data-field-col" }, [
-              _c("label", [_vm._v("Locations")]),
+              _vm._m(1),
               _vm._v(" "),
-              _c("div", { staticClass: "col-md-8" }, [
+              _c("div", { staticClass: "col-md-12" }, [
                 _c(
                   "select",
                   {
@@ -32339,7 +32406,7 @@ var render = function () {
               }),
             ]),
             _vm._v(" "),
-            _vm._m(0),
+            _vm._m(2),
             _vm._v(" "),
             _c("div", { staticClass: "col-md-12" }, [
               _c("textarea", {
@@ -32402,6 +32469,22 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-8" }, [
+      _c("label", [_vm._v("Last name")]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-8" }, [
+      _c("label", [_vm._v("Locations")]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-md-12" }, [
       _c("span", [_vm._v("Note")]),
     ])
@@ -32413,10 +32496,10 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/examination/ExaminationEdit.vue?vue&type=template&id=6969243c&":
-/*!***************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/examination/ExaminationEdit.vue?vue&type=template&id=6969243c& ***!
-  \***************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/examination/ExaminationCreate.vue?vue&type=template&id=431b47d4&":
+/*!*****************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/examination/ExaminationCreate.vue?vue&type=template&id=431b47d4& ***!
+  \*****************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -32459,7 +32542,7 @@ var render = function () {
           _c("div", { staticClass: "row" }, [
             _c("div", { staticClass: "row" }, [
               _c("div", { staticClass: "col-sm-12 data-field-col" }, [
-                _c("label", [_vm._v("Time of Examination ")]),
+                _vm._m(0),
                 _vm._v(" "),
                 _c(
                   "div",
@@ -32469,29 +32552,31 @@ var render = function () {
                       ? _c("b", [_vm._v(_vm._s(_vm.time_of_examination))])
                       : _vm._e(),
                     _vm._v(" "),
-                    _c("flat-pickr", {
-                      staticClass: "form-control",
-                      staticStyle: { "background-color": "#10163a" },
-                      attrs: {
-                        config: _vm.configforpicker,
-                        placeholder: "Select date",
-                        name: "date",
-                      },
-                      model: {
-                        value: _vm.time_of_examination,
-                        callback: function ($$v) {
-                          _vm.time_of_examination = $$v
-                        },
-                        expression: "time_of_examination",
-                      },
-                    }),
+                    _vm.user.role !== "doctor"
+                      ? _c("flat-pickr", {
+                          staticClass: "form-control",
+                          staticStyle: { "background-color": "#10163a" },
+                          attrs: {
+                            config: _vm.configforpicker,
+                            placeholder: "Select date",
+                            name: "date",
+                          },
+                          model: {
+                            value: _vm.time_of_examination,
+                            callback: function ($$v) {
+                              _vm.time_of_examination = $$v
+                            },
+                            expression: "time_of_examination",
+                          },
+                        })
+                      : _vm._e(),
                   ],
                   1
                 ),
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "col-sm-12 data-field-col" }, [
-                _c("label", [_vm._v("Patient ")]),
+                _vm._m(1),
                 _vm._v(" "),
                 _c("div", { staticClass: "col-md-12" }, [
                   _vm.user.role == "doctor" && _vm.data
@@ -32547,7 +32632,7 @@ var render = function () {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "col-sm-12 data-field-col" }, [
-                _c("label", [_vm._v("Doctor")]),
+                _vm._m(2),
                 _vm._v(" "),
                 _c("div", { staticClass: "col-md-12" }, [
                   _vm.user.role == "doctor" && _vm.data
@@ -32603,7 +32688,7 @@ var render = function () {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "col-sm-12 data-field-col" }, [
-                _c("label", [_vm._v("Diagnosis")]),
+                _vm._m(3),
                 _vm._v(" "),
                 _c("div", { staticClass: "col-md-12" }, [
                   _c("textarea", {
@@ -32629,7 +32714,7 @@ var render = function () {
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "col-sm-12 data-field-col" }, [
-                  _c("label", [_vm._v("Performed")]),
+                  _vm._m(4),
                   _vm._v(" "),
                   _c("div", { staticClass: "col-md-12" }, [
                     _c("fieldset", { staticClass: "checkbox" }, [
@@ -32676,7 +32761,7 @@ var render = function () {
                             },
                           }),
                           _vm._v(" "),
-                          _vm._m(0),
+                          _vm._m(5),
                         ]
                       ),
                     ]),
@@ -32719,6 +32804,46 @@ var render = function () {
   ])
 }
 var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-12" }, [
+      _c("label", [_vm._v("Time of Examination ")]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-12" }, [
+      _c("label", [_vm._v("Patient ")]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-12" }, [
+      _c("label", [_vm._v("Doctor")]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-12" }, [
+      _c("label", [_vm._v("Diagnosis")]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-12" }, [
+      _c("label", [_vm._v("Performed")]),
+    ])
+  },
   function () {
     var _vm = this
     var _h = _vm.$createElement

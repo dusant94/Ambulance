@@ -30,16 +30,15 @@
             <thead>
               <tr>
                 <th>#</th>
-                <th>ID</th>
                 <th>Name</th>
                 <th>Last Name</th>
                 <th>Type</th>
+                <th> </th>
               </tr>
             </thead>
             <tbody>
               <tr v-for="(doctor, index) in doctors" :key="doctor.id">
                 <td>{{ index + 1 }}</td>
-                <td>{{ doctor.id }}</td>
                 <td class="product-name">{{ doctor.name }}</td>
                 <td class="product-name">{{ doctor.last_name }}</td>
                 <td class="product-name">{{ doctor.type.name }}</td>

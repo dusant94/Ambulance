@@ -1513,7 +1513,10 @@ var render = function () {
           [
             _c(
               "li",
-              { staticClass: "active nav-item" },
+              {
+                staticClass: "nav-item",
+                class: this.$route.name == "doctors" ? "active" : "",
+              },
               [
                 _vm.user.role == "admin"
                   ? _c("router-link", { attrs: { to: { name: "doctors" } } }, [
@@ -1524,7 +1527,7 @@ var render = function () {
                           staticClass: "menu-title",
                           attrs: { "data-i18n": "Chat" },
                         },
-                        [_vm._v("Doctors")]
+                        [_vm._v("Doctors ")]
                       ),
                     ])
                   : _vm._e(),
@@ -1534,7 +1537,10 @@ var render = function () {
             _vm._v(" "),
             _c(
               "li",
-              { staticClass: "nav-item" },
+              {
+                staticClass: "nav-item",
+                class: this.$route.name == "patients" ? "active" : "",
+              },
               [
                 _vm.user.role == "admin"
                   ? _c("router-link", { attrs: { to: { name: "patients" } } }, [
@@ -1555,7 +1561,10 @@ var render = function () {
             _vm._v(" "),
             _c(
               "li",
-              { staticClass: "active nav-item" },
+              {
+                staticClass: "nav-item",
+                class: this.$route.name == "examinations" ? "active" : "",
+              },
               [
                 _vm.user.role == "doctor" || _vm.user.role == "counter"
                   ? _c(
