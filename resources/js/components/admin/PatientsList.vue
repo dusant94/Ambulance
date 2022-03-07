@@ -29,6 +29,7 @@
           <table class="table table-hover-animation">
             <thead>
               <tr>
+                <th>#</th>
                 <th>ID</th>
                 <th>Name</th>
                 <th>Last Name</th>
@@ -37,7 +38,8 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="patient in patients" :key="patient.id">
+              <tr v-for="(patient, index) in patients" :key="patient.id">
+                <td>{{ index + 1 }}</td>
                 <td>{{ patient.id }}</td>
                 <td class="product-name">{{ patient.name }}</td>
                 <td class="product-name">{{ patient.last_name }}</td>

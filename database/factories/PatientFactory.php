@@ -18,8 +18,8 @@ class PatientFactory extends Factory
         $locations = Location::pluck('id')->toArray();
 
         return [
-            'name' => $this->faker->name(),
-            'last_name' => $this->faker->name(),
+            'name' => $this->faker->firstName(),
+            'last_name' => $this->faker->lastName(),
             'location_id' =>  $this->faker->randomElement($locations),
             'jmbg' => rand(10**12,10**13-1),
             'note' => $this->faker->text(),

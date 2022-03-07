@@ -18,11 +18,11 @@ class UserFactory extends Factory
     {
         $doctor_types = TypDoctor::pluck('id')->toArray();
         return [
-            'name' => $this->faker->name(),
-            'last_name' => $this->faker->name(),
+            'name' => $this->faker->firstName(),
+            'last_name' => $this->faker->lastName(),
             'role' => 'doctor',
             'type' =>  $this->faker->randomElement($doctor_types),
-            'username' => $this->faker->unique()->name(),
+            'username' => $this->faker->unique()->userName(),
             'email_verified_at' => now(),
             'password' => Hash::make('admin'),
             'remember_token' => Str::random(10),

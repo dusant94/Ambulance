@@ -29,6 +29,7 @@
           <table class="table table-hover-animation">
             <thead>
               <tr>
+                <th>#</th>
                 <th>ID</th>
                 <th>Completed</th>
                 <th>Patient</th>
@@ -37,8 +38,9 @@
                </tr>
             </thead>
             <tbody>
-              <tr v-for="examination in examinations" :key="examination.id"
-               :style="[examination.performed ? {'background': '#94e394'} : {'background': '#e3acac'}]">
+              <tr v-for="(examination, index) in examinations" :key="examination.id"
+               :style="[examination.performed ? {'background': 'white'} : {'background': '#e3acac'}]">
+                <td >{{ index + 1 }}</td>
                 <td >{{ examination.id }}</td>
                 <td>{{ examination.performed ? "YES" : "NO" }}  </td>
                 <td class="product-name">{{ examination.patient.name }}</td>

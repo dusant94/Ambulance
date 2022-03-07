@@ -25,8 +25,6 @@ class CounterSeeder extends Seeder
             'password' => Hash::make('counter'),
             'remember_token' => Str::random(10),
         ];
-
-
         $user = User::where('username', '=', $defaultUser['username'])->first();
         if ($user === null) {
             \App\Models\User::factory()->create($defaultUser);

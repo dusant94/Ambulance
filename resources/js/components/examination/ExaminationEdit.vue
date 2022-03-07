@@ -18,7 +18,7 @@
               <div class="col-sm-12 data-field-col">
                 <label>Patient </label>
                 <div class="col-md-12">
-                  <p v-if="user.role == 'doctor' && data">{{ patient.name }}</p>
+                  <b v-if="user.role == 'doctor' && data">{{ patient.name }}</b>
                   <select
                     v-if="user.role !== 'doctor'"
                     class="form-control square"
@@ -37,7 +37,7 @@
               <div class="col-sm-12 data-field-col">
                 <label>Doctor</label>
                 <div class="col-md-12">
-                  <p v-if="user.role == 'doctor' && data">{{ doctor.name }}</p>
+                  <b v-if="user.role == 'doctor' && data">{{ doctor.name }}</b>
                   <select
                     v-if="user.role !== 'doctor'"
                     class="form-control square"

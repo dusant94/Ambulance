@@ -29287,7 +29287,7 @@ var render = function () {
                 _vm._v(" "),
                 _c("div", { staticClass: "col-md-12" }, [
                   _vm.user.role == "doctor" && _vm.data
-                    ? _c("p", [_vm._v(_vm._s(_vm.patient.name))])
+                    ? _c("b", [_vm._v(_vm._s(_vm.patient.name))])
                     : _vm._e(),
                   _vm._v(" "),
                   _vm.user.role !== "doctor"
@@ -29343,7 +29343,7 @@ var render = function () {
                 _vm._v(" "),
                 _c("div", { staticClass: "col-md-12" }, [
                   _vm.user.role == "doctor" && _vm.data
-                    ? _c("p", [_vm._v(_vm._s(_vm.doctor.name))])
+                    ? _c("b", [_vm._v(_vm._s(_vm.doctor.name))])
                     : _vm._e(),
                   _vm._v(" "),
                   _vm.user.role !== "doctor"
