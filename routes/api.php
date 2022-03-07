@@ -30,7 +30,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/patients/table', [PatientController::class, 'table']);
 
     Route::group(['middleware' => 'admin'], function () {
-
         Route::group(['prefix' => '/doctors'], function () {
             Route::get('/types', [DoctorController::class, 'types']);
             Route::put('/{id}', [DoctorController::class, 'update']);

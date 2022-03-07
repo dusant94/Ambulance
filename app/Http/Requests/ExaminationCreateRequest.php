@@ -34,6 +34,8 @@ class ExaminationCreateRequest extends FormRequest
     {
         return [
             'diagnosis.required' => "Diagnosis is required",
+            'doctor_id.required' => "Doctor is required",
+            'patient_id.required' => "Patient is required",
         ];
     }
 }

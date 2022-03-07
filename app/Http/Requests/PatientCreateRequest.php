@@ -31,4 +31,10 @@ class PatientCreateRequest extends FormRequest
             'location_id' => ['required', 'integer', 'exists:locations,id'],
         ];
     }
+    public function messages()
+    {
+        return [
+            'location_id.required' => "Loacation is required",
+        ];
+    }
 }
