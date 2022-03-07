@@ -1,5 +1,10 @@
 <?php
 
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\ExaminationController;
+use App\Http\Controllers\LocationController;
+use App\Http\Controllers\PatientController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +19,33 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::post('/login', [AuthController::class, 'login']);
+Route::post('/logout', [AuthController::class, 'logout']);
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+});
+Route::middleware('auth:sanctum')->group(function () {
+
+    Route::group(['middleware' => 'admin'], function () {
+
+        Route::group(['prefix' => '/doctors'], function () {
+            Route::get('/table', [DoctorController::class, 'table']);
+            Route::get('/types', [DoctorController::class, 'types']);
+            Route::put('/{id}', [DoctorController::class, 'update']);
+            Route::post('/', [DoctorController::class, 'store']);
+            Route::delete('/{id}', [DoctorController::class, 'destroy']);
+        });
+        Route::group(['prefix' => '/patients'], function () {
+            Route::get('/table', [PatientController::class, 'table']);
+            Route::put('/{id}', [PatientController::class, 'update']);
+            Route::post('/', [PatientController::class, 'store']);
+            Route::delete('/{id}', [PatientController::class, 'destroy']);
+        });
+    });
+
+    Route::group(['prefix' => '/examinations'], function () {
+        Route::get('/table', [ExaminationController::class, 'table']);
+    });
+    Route::get('locations', [LocationController::class, 'index']);
 });

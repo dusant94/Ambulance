@@ -18,10 +18,10 @@ class Examination extends Model
     ];
 
     public function patient(){
-        return $this->hasOne(Patient::class, 'patient_id', 'id');
+        return $this->hasOne(Patient::class, 'id', 'patient_id');
     }
 
     public function doctor(){
-        return $this->hasOne(User::class, 'doctor_id', 'id');
+        return $this->hasOne(User::class, 'id', 'doctor_id');
     }
 }

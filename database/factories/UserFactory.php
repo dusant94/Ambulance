@@ -2,7 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Models\TypDoctor;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
 class UserFactory extends Factory
@@ -14,11 +16,15 @@ class UserFactory extends Factory
      */
     public function definition()
     {
+        $doctor_types = TypDoctor::pluck('id')->toArray();
         return [
             'name' => $this->faker->name(),
-            'email' => $this->faker->unique()->safeEmail(),
+            'last_name' => $this->faker->name(),
+            'role' => 'doctor',
+            'type' =>  $this->faker->randomElement($doctor_types),
+            'username' => $this->faker->unique()->name(),
             'email_verified_at' => now(),
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'password' => Hash::make('admin'),
             'remember_token' => Str::random(10),
         ];
     }

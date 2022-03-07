@@ -46,7 +46,7 @@ class User extends Authenticatable
     ];
 
     public function type(){
-        return $this->hasOne(TypDoctor::class, 'type', 'id');
+        return $this->hasOne(TypDoctor::class, 'id', 'type');
     }
 }
 
