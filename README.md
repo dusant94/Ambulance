@@ -1,7 +1,7 @@
  
 ## Project first RUN
 
- 1. - `git clone git@github.com:dusant94/ambulante.git` 
+ 1. - `git clone git@github.com:dusant94/Ambulance.git` 
 
  2. - `cd apartment-api/`
 
