@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class CounterMiddleware
+class ExaminationMiddleware
 {
     /**
      * Handle an incoming request.
@@ -18,11 +18,11 @@ class CounterMiddleware
     public function handle(Request $request, Closure $next)
     {
         $user = Auth::user();
-        if ($user->role == 'counter') {
+        if ($user->role == 'counter' || $user->role == 'doctor') {
             return $next($request);
         }
         return response()->json([
-            'error' => 'You are not counter.'
+            'error' => 'Not allowed.'
         ]);
     }
 }
