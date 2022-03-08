@@ -20,7 +20,6 @@ class PatientController extends Controller
 
     public function store(PatientCreateRequest $request)
     {
-
         try {
             $inputs = $request->validated();
             $location = Location::create([
@@ -36,7 +35,6 @@ class PatientController extends Controller
     }
     public function update(PatientUpdateRequest $request, $id)
     {
-
         try {
             $inputs = $request->validated();
             $patient = Patient::findOrFail($id);
@@ -53,7 +51,6 @@ class PatientController extends Controller
     }
     public function destroy($id)
     {
-
         try {
             $patient = Patient::findOrFail($id);
             $patient->delete();

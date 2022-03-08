@@ -14,18 +14,19 @@ use Illuminate\Support\Facades\Hash;
 class DoctorController extends Controller
 {
 
-    public function table(){
+    public function table()
+    {
 
         $doctors = User::orderBy('created_at', 'desc')->where('role', 'doctor')->with('type')->get();
         return response()->json($doctors, Response::HTTP_OK);
     }
 
-    public function update(DoctorUpdateRequest $request, $id){
-
-         try {
+    public function update(DoctorUpdateRequest $request, $id)
+    {
+        try {
             $inputs = $request->validated();
             $doctor = User::findOrFail($id);
-            if($inputs['password'] !== null){
+            if ($inputs['password'] !== null) {
                 $inputs['password'] = Hash::make($inputs['password']);
             }
             $doctor = $doctor->update(array_filter($inputs));
@@ -35,8 +36,8 @@ class DoctorController extends Controller
         }
     }
 
-    public function store(DoctorCreateRequest $request){
-
+    public function store(DoctorCreateRequest $request)
+    {
         try {
             $inputs = $request->validated();
             $inputs['role'] = 'doctor';
@@ -47,8 +48,8 @@ class DoctorController extends Controller
             return response()->json($e->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
-    public function destroy($id){
-
+    public function destroy($id)
+    {
         try {
             $doctor = User::findOrFail($id);
             $doctor->delete();
@@ -57,9 +58,9 @@ class DoctorController extends Controller
             return response()->json($e->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
-    public function types(){
+    public function types()
+    {
         $types = TypDoctor::all();
         return response()->json($types, Response::HTTP_OK);
     }
-
 }
