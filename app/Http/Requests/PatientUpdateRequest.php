@@ -27,8 +27,7 @@ class PatientUpdateRequest extends FormRequest
             'name' => ['sometimes', 'string', 'max:100'],
             'last_name' => ['sometimes', 'string', 'max:100'],
             'jmbg' => ['sometimes', 'string', 'size:13', 'regex:/^[0-9]+$/'],
-            'note' => ['sometimes', 'string', 'max:2000'],
-            // 'location_id' => ['sometimes', 'integer', 'exists:locations,id'],
+            'note' => ['sometimes', 'string', 'max:1000'],
             'city' => ['sometimes', 'string', 'max:100'],
             'address' => ['sometimes', 'string', 'max:100'],
         ];
