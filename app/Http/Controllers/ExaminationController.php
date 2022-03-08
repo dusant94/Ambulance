@@ -15,6 +15,7 @@ class ExaminationController extends Controller
     public function __construct()
     {
         $this->middleware('counter')->only('store', 'destroy');
+        $this->middleware('examination');
      }
 
     public function table()
