@@ -25,23 +25,21 @@
               </div>
               <input type="text" class="form-control" v-model="last_name" />
             </div>
-            <div class="col-sm-12 data-field-col">
+             <div class="col-sm-6 data-field-col">
               <div class="col-md-8">
 
-              <label>Locations</label>
+              <label>City</label>
               </div>
-              <div class="col-md-12">
-                <select class="form-control square" v-model="location">
-                  <option
-                    :value="location"
-                    v-for="location in locations"
-                    :key="location.id"
-                  >
-                    {{ location.address }}
-                  </option>
-                </select>
-              </div>
+              <input type="text" class="form-control" v-model="city" />
             </div>
+             <div class="col-sm-6 data-field-col">
+              <div class="col-md-8">
+
+              <label>Address</label>
+              </div>
+              <input type="text" class="form-control" v-model="address" />
+            </div>
+
             <div class="col-sm-12 data-field-col">
               <label>JMBG</label>
               <input type="text" class="form-control" v-model="jmbg" />
@@ -78,25 +76,21 @@ export default {
       url: this.data ? "/api/patients/" + this.data.id : "/api/patients/",
       name: this.data ? this.data.name : null,
       last_name: this.data ? this.data.last_name : null,
-      location: this.data ? this.data.location : null,
       jmbg: this.data ? this.data.jmbg : null,
       note: this.data ? this.data.note : null,
-      locations: null,
+      city: this.data ? this.data.location.city : null,
+      address: this.data ? this.data.location.address : null,
     };
-  },
-  mounted() {
-    axios.get("/api/locations").then((response) => {
-      this.locations = response.data;
-    });
   },
   methods: {
     save() {
       let data = {
         name: this.name,
         last_name: this.last_name,
-        location_id: this.location.id,
         note: this.note,
         jmbg: this.jmbg,
+        city: this.city,
+        address: this.address,
       };
       if (this.data) {
         axios

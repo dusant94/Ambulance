@@ -5655,8 +5655,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "patients-create",
   props: ["data"],
@@ -5665,37 +5663,31 @@ __webpack_require__.r(__webpack_exports__);
       url: this.data ? "/api/patients/" + this.data.id : "/api/patients/",
       name: this.data ? this.data.name : null,
       last_name: this.data ? this.data.last_name : null,
-      location: this.data ? this.data.location : null,
       jmbg: this.data ? this.data.jmbg : null,
       note: this.data ? this.data.note : null,
-      locations: null
+      city: this.data ? this.data.location.city : null,
+      address: this.data ? this.data.location.address : null
     };
-  },
-  mounted: function mounted() {
-    var _this = this;
-
-    axios.get("/api/locations").then(function (response) {
-      _this.locations = response.data;
-    });
   },
   methods: {
     save: function save() {
-      var _this2 = this;
+      var _this = this;
 
       var data = {
         name: this.name,
         last_name: this.last_name,
-        location_id: this.location.id,
         note: this.note,
-        jmbg: this.jmbg
+        jmbg: this.jmbg,
+        city: this.city,
+        address: this.address
       };
 
       if (this.data) {
         axios.put(this.url, data).then(function (response) {
-          _this2.$emit("refreshData");
+          _this.$emit("refreshData");
         })["catch"](function (error) {
           Object.values(error.response.data.errors).forEach(function (value, index) {
-            _this2.$notify({
+            _this.$notify({
               group: "foo",
               type: "warn",
               title: "Error",
@@ -5705,10 +5697,10 @@ __webpack_require__.r(__webpack_exports__);
         });
       } else {
         axios.post(this.url, data).then(function (response) {
-          _this2.$emit("refreshData");
+          _this.$emit("refreshData");
         })["catch"](function (error) {
           Object.values(error.response.data.errors).forEach(function (value, index) {
-            _this2.$notify({
+            _this.$notify({
               group: "foo",
               type: "warn",
               title: "Error",
@@ -11347,7 +11339,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.disabled {\n  pointer-events: none;\n  opacity: 0.6;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.disabled {\r\n  pointer-events: none;\r\n  opacity: 0.6;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -32753,54 +32745,56 @@ var render = function () {
               }),
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "col-sm-12 data-field-col" }, [
+            _c("div", { staticClass: "col-sm-6 data-field-col" }, [
               _vm._m(1),
               _vm._v(" "),
-              _c("div", { staticClass: "col-md-12" }, [
-                _c(
-                  "select",
+              _c("input", {
+                directives: [
                   {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.location,
-                        expression: "location",
-                      },
-                    ],
-                    staticClass: "form-control square",
-                    on: {
-                      change: function ($event) {
-                        var $$selectedVal = Array.prototype.filter
-                          .call($event.target.options, function (o) {
-                            return o.selected
-                          })
-                          .map(function (o) {
-                            var val = "_value" in o ? o._value : o.value
-                            return val
-                          })
-                        _vm.location = $event.target.multiple
-                          ? $$selectedVal
-                          : $$selectedVal[0]
-                      },
-                    },
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.city,
+                    expression: "city",
                   },
-                  _vm._l(_vm.locations, function (location) {
-                    return _c(
-                      "option",
-                      { key: location.id, domProps: { value: location } },
-                      [
-                        _vm._v(
-                          "\n                  " +
-                            _vm._s(location.address) +
-                            "\n                "
-                        ),
-                      ]
-                    )
-                  }),
-                  0
-                ),
-              ]),
+                ],
+                staticClass: "form-control",
+                attrs: { type: "text" },
+                domProps: { value: _vm.city },
+                on: {
+                  input: function ($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.city = $event.target.value
+                  },
+                },
+              }),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-sm-6 data-field-col" }, [
+              _vm._m(2),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.address,
+                    expression: "address",
+                  },
+                ],
+                staticClass: "form-control",
+                attrs: { type: "text" },
+                domProps: { value: _vm.address },
+                on: {
+                  input: function ($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.address = $event.target.value
+                  },
+                },
+              }),
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "col-sm-12 data-field-col" }, [
@@ -32829,7 +32823,7 @@ var render = function () {
               }),
             ]),
             _vm._v(" "),
-            _vm._m(2),
+            _vm._m(3),
             _vm._v(" "),
             _c("div", { staticClass: "col-md-12" }, [
               _c("textarea", {
@@ -32901,7 +32895,15 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-md-8" }, [
-      _c("label", [_vm._v("Locations")]),
+      _c("label", [_vm._v("City")]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-8" }, [
+      _c("label", [_vm._v("Address")]),
     ])
   },
   function () {

@@ -28,7 +28,10 @@ class PatientCreateRequest extends FormRequest
             'last_name' => ['required', 'string', 'max:100'],
             'jmbg' => ['required', 'string', 'size:13', 'regex:/^[0-9]+$/'],
             'note' => ['sometimes', 'string', 'max:2000'],
-            'location_id' => ['required', 'integer', 'exists:locations,id'],
+            // 'location_id' => ['required', 'integer', 'exists:locations,id'],
+            'city' => ['required', 'string', 'max:100'],
+            'address' => ['required', 'string', 'max:100'],
+
         ];
     }
     public function messages()
