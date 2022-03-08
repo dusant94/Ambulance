@@ -17,6 +17,23 @@
             <div class="row">
               <div class="col-sm-12 data-field-col">
                 <div class="col-md-12">
+                  <label>Performed</label>
+                </div>
+                <div class="col-md-12">
+                  <fieldset class="checkbox">
+                    <div class="vs-checkbox-con vs-checkbox-primary">
+                      <input type="checkbox" v-model="performed" />
+                      <span class="vs-checkbox">
+                        <span class="vs-checkbox--check">
+                          <i class="vs-icon feather icon-check"></i>
+                        </span>
+                      </span>
+                    </div>
+                  </fieldset>
+                </div>
+              </div>
+              <div class="col-sm-12 data-field-col">
+                <div class="col-md-12">
                   <label>Time of Examination </label>
                 </div>
                 <div class="col-md-12">
@@ -40,19 +57,19 @@
                 </div>
                 <div class="col-md-12">
                   <b v-if="user.role == 'doctor' && data">{{ patient.name }}</b>
-                  <select
+
+                  <multiselect
                     v-if="user.role !== 'doctor'"
-                    class="form-control square"
                     v-model="patient"
+                    :options="patients"
+                    :show-labels="false"
+                    placeholder=""
+                    label="name"
+                    track-by="name"
+                    :showNoResults="false"
+                    :custom-label="PatientName"
                   >
-                    <option
-                      :value="patient"
-                      v-for="patient in patients"
-                      :key="patient.id"
-                    >
-                      {{ patient.name }}
-                    </option>
-                  </select>
+                  </multiselect>
                 </div>
               </div>
               <div class="col-sm-12 data-field-col">
@@ -62,19 +79,18 @@
 
                 <div class="col-md-12">
                   <b v-if="user.role == 'doctor' && data">{{ doctor.name }}</b>
-                  <select
+                  <multiselect
                     v-if="user.role !== 'doctor'"
-                    class="form-control square"
                     v-model="doctor"
+                    :options="doctors"
+                    :show-labels="false"
+                    placeholder=""
+                    label="name"
+                    track-by="name"
+                    :showNoResults="false"
+                    :custom-label="DoctorName"
                   >
-                    <option
-                      :value="doctor"
-                      v-for="doctor in doctors"
-                      :key="doctor.id"
-                    >
-                      {{ doctor.name }}
-                    </option>
-                  </select>
+                  </multiselect>
                 </div>
               </div>
               <div class="col-sm-12 data-field-col">
@@ -87,24 +103,6 @@
                     class="form-control square"
                     v-model="diagnosis"
                   ></textarea>
-                </div>
-                <div class="col-sm-12 data-field-col">
-                  <div class="col-md-12">
-                    <label>Performed</label>
-                  </div>
-
-                  <div class="col-md-12">
-                    <fieldset class="checkbox">
-                      <div class="vs-checkbox-con vs-checkbox-primary">
-                        <input type="checkbox" v-model="performed" />
-                        <span class="vs-checkbox">
-                          <span class="vs-checkbox--check">
-                            <i class="vs-icon feather icon-check"></i>
-                          </span>
-                        </span>
-                      </div>
-                    </fieldset>
-                  </div>
                 </div>
               </div>
             </div>
@@ -128,9 +126,10 @@
 <script>
 import flatPickr from "vue-flatpickr-component";
 import "flatpickr/dist/flatpickr.css";
+import Multiselect from "vue-multiselect";
 
 export default {
-  components: { flatPickr },
+  components: { flatPickr, Multiselect },
   name: "examintaions-create",
   props: ["data"],
   data() {
@@ -165,6 +164,12 @@ export default {
     });
   },
   methods: {
+    DoctorName({ name, last_name }) {
+      return `${name}  ${last_name}`;
+    },
+    PatientName({ name, last_name }) {
+      return `${name}  ${last_name}`;
+    },
     save() {
       let data = {
         diagnosis: this.diagnosis,
@@ -217,3 +222,93 @@ export default {
   },
 };
 </script>
+// <style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
+<style>
+.multiselect {
+  box-sizing: content-box;
+  display: block;
+  position: relative;
+  width: 100%;
+  min-height: 40px;
+  text-align: left;
+  color: #070707;
+  font-family: inherit;
+  font-size: 12px;
+  touch-action: manipulation;
+}
+.multiselect__element {
+  display: block;
+  background-color: #ffffff;
+}
+.multiselect__tags {
+  min-height: 40px;
+  display: block;
+  padding: 8px 40px 0 8px;
+  border-radius: 5px;
+  border: 1px solid #ebebeb;
+  background: #ebebeb;
+  font-size: 12px;
+}
+.multiselect__input {
+  font-family: inherit;
+  font-size: 12px;
+  touch-action: manipulation;
+  position: relative;
+  display: inline-block;
+  min-height: 20px;
+  line-height: 20px;
+  border: none;
+  border-radius: 5px;
+  background: #ebebeb;
+  padding: 0 0 0 5px;
+  width: 100%;
+  transition: border 0.1s ease;
+  box-sizing: border-box;
+  margin-bottom: 8px;
+  vertical-align: top;
+}
+
+.multiselect__single {
+  font-family: inherit;
+  font-size: 12px;
+  touch-action: manipulation;
+  position: relative;
+  display: inline-block;
+  min-height: 20px;
+  line-height: 20px;
+  border: none;
+  border-radius: 5px;
+  background: #ebebeb;
+  padding: 0 0 0 5px;
+  width: 100%;
+  transition: border 0.1s ease;
+  box-sizing: border-box;
+  margin-bottom: 8px;
+  vertical-align: top;
+}
+.multiselect--active {
+  z-index: 50;
+}
+.multiselect__option--highlight {
+  background: #acaeb8;
+  outline: none;
+  color: rgb(0, 0, 0);
+}
+.multiselect__option--selected {
+  background: #acaeb8;
+  color: rgb(0, 0, 0);
+}
+.multiselect__option--selected.multiselect__option--highlight {
+  background: #acaeb8;
+  color: rgb(0, 0, 0);
+}
+
+.multiselect__content {
+  list-style: none;
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+  min-width: 100%;
+  vertical-align: top;
+}
+</style>
